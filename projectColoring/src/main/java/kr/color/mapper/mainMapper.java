@@ -14,4 +14,5 @@ public interface mainMapper {
 	public List<userPalettes> getMyPalettes(int user_seq);
 	public void deleteMyPalette(int seq);
 	public void insertMyPalettes(userPalettes vo);
+	public Palettes colorDetail(int seq);
 }

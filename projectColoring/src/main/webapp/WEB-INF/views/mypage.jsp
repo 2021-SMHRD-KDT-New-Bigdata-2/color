@@ -334,7 +334,7 @@ th {
 				view += "<span>" + data[i].palette_color5 + "</span>";
 				view += "</div>";
 				view += "</div>";
-				view += "<span class='palettes_name'>" + data[i].palette_name + "</span>";
+				view += "<a href='${cpath}/colorDetail.do?idx=${vo.idx}' class='palettes_name'>" + data[i].palette_name + "</a>";
 				view += "<a onclick='deleteMyPalette(" + data[i].palette_seq + ")' style='cursor: pointer;'>삭제하기</a>";
 				view += "</li>";
 				$("#palettes_result").append(view);

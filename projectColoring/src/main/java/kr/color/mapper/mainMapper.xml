@@ -23,4 +23,8 @@
 		INSERT INTO userPalettes (palette_name, palette_color1,palette_color2,palette_color3, palette_color4, palette_color5,user_seq)
 		VALUES (#{palette_name}, #{palette_color1},#{palette_color2}, #{palette_color3}, #{palette_color4},#{palette_color5}, #{user_seq});
 	</insert>
+	
+	<select id="colorDetail" parameterType="int" resultType="kr.color.domain.Palettes">
+	    select * from Palettes where palette_seq=#{seq};
+	</select>
 </mapper>
