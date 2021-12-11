@@ -202,79 +202,79 @@
 									<li>
 										<div class="colorDiv" id="red"
 											style="background-color: #ff2000; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Red</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="orange"
 											style="background-color: #ff7c00; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Orange</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="hotpink"
 											style="background-color: #f52394; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Hot Pink</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="purple"
 											style="background-color: purple; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Purple</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="blue"
 											style="background-color: blue; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Blue</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="sky"
 											style="background-color: #00b2d4; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Sky</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="green"
 											style="background-color: #00ab00; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Green</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="greenyellow"
 											style="background-color: #90e200; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Green Yellow</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="yellow"
 											style="background-color: #ffcf00; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Yellow</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="violet"
 											style="background-color: #7f00ff; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Violet</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="gray"
 											style="background-color: #c4c4c4; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Gray</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="brown"
 											style="background-color: #593111; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Brown</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="white"
 											style="background-color: white; border: 1px solid black; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">White</span>
 										</div>
 									</li>
 
@@ -311,23 +311,23 @@
 					<li><div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color1};">
-								<h3>${vo.palette_color1}</h3>
+								<span>${vo.palette_color1}</span>
 							</div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color2};">
-								<h3>${vo.palette_color2}</h3>
+								<span>${vo.palette_color2}</span>
 							</div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color3};">
-								<h3>${vo.palette_color3}</h3>
+								<span>${vo.palette_color3}</span>
 							</div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color4};">
-								<h3>${vo.palette_color4}</h3>
+								<span>${vo.palette_color4}</span>
 							</div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color5};">
-								<h3>${vo.palette_color5}</h3>
+								<span>${vo.palette_color5}</span>
 							</div>
 						</div></li>
 				</c:forEach>
@@ -503,19 +503,19 @@
 				var view = "<li>";
 				view += "<div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color1+";'>";
-				view += "<h3>" + data[i].palette_color1 + "</h3>";
+				view += "<span>" + data[i].palette_color1 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color2+";'>";
-				view += "<h3>" + data[i].palette_color2 + "</h3>";
+				view += "<span>" + data[i].palette_color2 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color3+";'>";
-				view += "<h3>" + data[i].palette_color3 + "</h3>";
+				view += "<span>" + data[i].palette_color3 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color4+";'>";
-				view += "<h3>" + data[i].palette_color4 + "</h3>";
+				view += "<span>" + data[i].palette_color4 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color5+";'>";
-				view += "<h3>" + data[i].palette_color5 + "</h3>";
+				view += "<span>" + data[i].palette_color5 + "</span>";
 				view += "</div>";
 				view += "</div>";
 				view += "<a class='savePalette' style='cursor: pointer;'>저장하기</a>"
@@ -546,13 +546,14 @@
 			tmp.select();
 			document.execCommand('copy');
 			document.body.removeChild(tmp);
-			$(this).children().html("Copied");
+			$(this).children().html("Copied!");
 		});
 
 		// 마우스 호버 헥스코드 표시/초기화
 		var tmp_code
-		$(document).on("mouseover", ".palette_color", function() {
+		$(document).on("mouseenter", ".palette_color", function() {
 			tmp_code = $(this).children().html();
+			$(this).children().css("color", getColorByLuma(tmp_code))
 			$(this).children().css("display", "inline");
 		});
 		$(document).on("mouseleave", ".palette_color", function() {
@@ -560,6 +561,18 @@
 			$(this).children().html(tmp_code);
 		});
 
+		// 밝기 값에 따라서 텍스트 색상 변경
+	    function getColorByLuma(hexColor) {
+	      const c = hexColor.substring(1)      // 색상 앞의 # 제거
+	      const rgb = parseInt(c, 16)   // rrggbb를 10진수로 변환
+	      const r = (rgb >> 16) & 0xff  // red 추출
+	      const g = (rgb >>  8) & 0xff  // green 추출
+	      const b = (rgb >>  0) & 0xff  // blue 추출
+	      const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
+	      // 색상 선택
+	      return luma < 127.5 ? "white" : "black"
+	    }
+		
 		// 저장하기 기능
 		$(document).on("click",".savePalette",function(){
 			var palette_color1 = $(this).parent().find('div:eq(0)').find('div:eq(0)').children().html();

@@ -300,8 +300,12 @@ section {
     flex: 1;
  }
  
- .palette_color > h3 {
+ .palette_color > span {
  	display: none;
+ 	line-height: 47px;
+ 	vertical-align: middle;
+ 	margin-left: 10px;
+ 	margin-right: 10px;
  }
  
  #palettes_result {

@@ -319,19 +319,19 @@ th {
 				var view = "<li>";
 				view += "<div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color1+";'>";
-				view += "<h3>" + data[i].palette_color1 + "</h3>";
+				view += "<span>" + data[i].palette_color1 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color2+";'>";
-				view += "<h3>" + data[i].palette_color2 + "</h3>";
+				view += "<span>" + data[i].palette_color2 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color3+";'>";
-				view += "<h3>" + data[i].palette_color3 + "</h3>";
+				view += "<span>" + data[i].palette_color3 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color4+";'>";
-				view += "<h3>" + data[i].palette_color4 + "</h3>";
+				view += "<span>" + data[i].palette_color4 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color5+";'>";
-				view += "<h3>" + data[i].palette_color5 + "</h3>";
+				view += "<span>" + data[i].palette_color5 + "</span>";
 				view += "</div>";
 				view += "</div>";
 				view += "<span class='palettes_name'>" + data[i].palette_name + "</span>";
@@ -349,19 +349,32 @@ th {
 			tmp.select();
 			document.execCommand('copy');
 			document.body.removeChild(tmp);
-			$(this).children().html("Copied");
+			$(this).children().html("Copied!");
 		});
 
 		// 마우스 호버 헥스코드 표시/초기화
 		var tmp_code
-		$(document).on("mouseover", ".palette_color", function() {
+		$(document).on("mouseenter", ".palette_color", function() {
 			tmp_code = $(this).children().html();
+			$(this).children().css("color", getColorByLuma(tmp_code))
 			$(this).children().css("display", "inline");
 		});
 		$(document).on("mouseleave", ".palette_color", function() {
 			$(this).children().css("display", "none");
 			$(this).children().html(tmp_code);
 		});
+		
+		// 밝기 값에 따라서 텍스트 색상 변경
+	    function getColorByLuma(hexColor) {
+	      const c = hexColor.substring(1)      // 색상 앞의 # 제거
+	      const rgb = parseInt(c, 16)   // rrggbb를 10진수로 변환
+	      const r = (rgb >> 16) & 0xff  // red 추출
+	      const g = (rgb >>  8) & 0xff  // green 추출
+	      const b = (rgb >>  0) & 0xff  // blue 추출
+	      const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
+	      // 색상 선택
+	      return luma < 127.5 ? "white" : "black"
+	    }
 		
 		// 팔레트 삭제
 		function deleteMyPalette(seq) {
