@@ -228,9 +228,6 @@ th {
 												name="user_pwd" class="text-field" placeholder="비밀번호">
 											<input type="submit" value="로그인" class="submit-btn">
 										</form>
-										<div class="links">
-											<a href="#">비밀번호를 잊어버리셨나요?</a>
-										</div>
 									</div>
 								</div>
 							</div> <!-- modal 끝 -->
@@ -256,7 +253,7 @@ th {
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<div class="section-title">
-					<h2 class="dye">
+					<h2>
 						<b>INFOMATION</b>
 					</h2>
 					<div class="myinfo_table">

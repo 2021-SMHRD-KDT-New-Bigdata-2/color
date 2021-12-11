@@ -486,7 +486,7 @@
 				return false;
 			}
 			$.ajax({
-				url : "${cpath}//genPalette.do",
+				url : "${cpath}/genPalette.do",
 				type : "get",
 				data : {
 					"inputText" : inputText
@@ -518,7 +518,7 @@
 				view += "<h3>" + data[i].palette_color5 + "</h3>";
 				view += "</div>";
 				view += "</div>";
-				view += "<a onclick='insertMyPalette(" +data[i].palette_seq+ ")' style='cursor: pointer;'>저장하기</a>"
+				view += "<a class='savePalette' style='cursor: pointer;'>저장하기</a>"
 				view += "</li>";
 				$("#palettes_result").append(view).children(':last').hide()
 						.fadeIn();
@@ -560,6 +560,40 @@
 			$(this).children().html(tmp_code);
 		});
 
+		// 저장하기 기능
+		$(document).on("click",".savePalette",function(){
+			var palette_color1 = $(this).parent().find('div:eq(0)').find('div:eq(0)').children().html();
+			var palette_color2 = $(this).parent().find('div:eq(0)').find('div:eq(1)').children().html();
+			var palette_color3 = $(this).parent().find('div:eq(0)').find('div:eq(2)').children().html();
+			var palette_color4 = $(this).parent().find('div:eq(0)').find('div:eq(3)').children().html();
+			var palette_color5 = $(this).parent().find('div:eq(0)').find('div:eq(4)').children().html();
+			var palette_name = $("#inputText").val();
+			var user_seq = "${userVO.user_seq}";
+			$.ajax({
+				url : "insertMyPalettes.do",
+				type : "POST",
+				
+				data : {
+					"palette_name" : palette_name,
+					"palette_color1" : palette_color1,
+					"palette_color2" : palette_color2,
+					"palette_color3" : palette_color3,
+					"palette_color4" : palette_color4,
+					"palette_color5" : palette_color5,
+					"user_seq" : user_seq
+				},
+				dataType : "text",
+				success : function(res){
+					console.log(res)
+					alert("success");
+				},
+				error : function(err) {
+					console.log(err)
+					alert("fail");
+				}
+			});
+		})
+		
 		
 	</script>
 </body>
