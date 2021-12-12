@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.color.domain.Palettes;
+import kr.color.domain.userPalettes;
 import kr.color.mapper.mainMapper;
 
 @Controller
@@ -22,5 +23,11 @@ public class mainController {
 		model.addAttribute("list",list);
 		return "main";
 	}
-
+	
+	@RequestMapping("/paletteDetail.do")
+	public String paletteDetail(int seq, Model model) {
+		userPalettes vo = mapper.paletteDetail(seq);
+		model.addAttribute("vo",vo);
+		return "paletteDetail";
+	}
 }

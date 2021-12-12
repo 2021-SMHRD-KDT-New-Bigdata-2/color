@@ -311,6 +311,10 @@ section {
  #palettes_result {
  	padding: 0px;
  }
+ 
+ #palettes_name{
+ 	margin-right : 40px;
+ }
 
 
 /*--------------------

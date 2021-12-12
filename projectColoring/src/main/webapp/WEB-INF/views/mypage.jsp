@@ -21,8 +21,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Coloring - Describe Your Emotions</title>
-
-
 <!-- Style 시작 -->
 <style>
 /* 툴팁 기본 스타일 설정 시작 */
@@ -248,6 +246,7 @@ th {
 		</div>
 	</nav>
 	<!-- 상단 로그인, 로그아웃 바 끝 -->
+
 	<section id="portfolio">
 		<!-- <div class="container"> -->
 		<div class="row">
@@ -334,7 +333,7 @@ th {
 				view += "<span>" + data[i].palette_color5 + "</span>";
 				view += "</div>";
 				view += "</div>";
-				view += "<a href='${cpath}/colorDetail.do?idx=${vo.idx}' class='palettes_name'>" + data[i].palette_name + "</a>";
+				view += "<a href='/web/paletteDetail.do?seq="+ data[i].palette_seq +"' class='palettes_name' style='cursor: pointer; margin-right : 30px;'>" + data[i].palette_name + "</a>";
 				view += "<a onclick='deleteMyPalette(" + data[i].palette_seq + ")' style='cursor: pointer;'>삭제하기</a>";
 				view += "</li>";
 				$("#palettes_result").append(view);
@@ -356,7 +355,7 @@ th {
 		var tmp_code
 		$(document).on("mouseenter", ".palette_color", function() {
 			tmp_code = $(this).children().html();
-			$(this).children().css("color", getColorByLuma(tmp_code))
+			$(this).children().css("color", getColorByLuma(tmp_code));
 			$(this).children().css("display", "inline");
 		});
 		$(document).on("mouseleave", ".palette_color", function() {
@@ -366,7 +365,7 @@ th {
 		
 		// 밝기 값에 따라서 텍스트 색상 변경
 	    function getColorByLuma(hexColor) {
-	      const c = hexColor.substring(1)      // 색상 앞의 # 제거
+	      const c = hexColor.substring(1)  // 색상 앞의 # 제거
 	      const rgb = parseInt(c, 16)   // rrggbb를 10진수로 변환
 	      const r = (rgb >> 16) & 0xff  // red 추출
 	      const g = (rgb >>  8) & 0xff  // green 추출

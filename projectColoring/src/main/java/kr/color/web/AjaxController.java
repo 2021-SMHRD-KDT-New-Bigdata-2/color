@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,13 +47,5 @@ public class AjaxController {
 	public String insertMyPalettes(userPalettes vo) {
 		mapper.insertMyPalettes(vo);
 		return "ok";
-	}
-	
-	// 팔레트 상세정보 가져오기
-	@GetMapping("/colorDetail.do")
-	public String colorDetail(int seq, Model model){
-		Palettes vo = mapper.colorDetail(seq);
-		model.addAttribute("vo",vo); // 객체바인딩(*) 중요중요 ★★★
-		return "colorDetail";
 	}
 }
