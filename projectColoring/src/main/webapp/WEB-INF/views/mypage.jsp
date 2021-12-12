@@ -10,13 +10,10 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="${cpath}/resources/css/style.css" />
-<link rel="stylesheet" href="${cpath}/resources/css/style1.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="${cpath}/resources/css/style.css" />
+<link rel="stylesheet" href="${cpath}/resources/css/style1.css" />
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,9 +22,9 @@
 <meta name="author" content="">
 <title>Coloring - Describe Your Emotions</title>
 
+
 <!-- Style 시작 -->
 <style>
-
 /* 툴팁 기본 스타일 설정 시작 */
 .colorDiv {
 	position: relative;
@@ -231,9 +228,6 @@ th {
 												name="user_pwd" class="text-field" placeholder="비밀번호">
 											<input type="submit" value="로그인" class="submit-btn">
 										</form>
-										<div class="links">
-											<a href="#">비밀번호를 잊어버리셨나요?</a>
-										</div>
 									</div>
 								</div>
 							</div> <!-- modal 끝 -->
@@ -259,8 +253,8 @@ th {
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<div class="section-title">
-					<h2 class="dye">
-						<b>User ID</b>
+					<h2>
+						<b>INFOMATION</b>
 					</h2>
 					<div class="myinfo_table">
 						<table cellspacing="0" cellpadding="0">
@@ -287,40 +281,117 @@ th {
 					<h2>
 						<b>My Favorites</b>
 					</h2>
-					<a href="" title="Test Palette"></a>
 					<div class="palettes_list">
-						<ul class="palettes">
-							<li>
-								<div style="background-color: #00ab00;"></div>
-								<div style="background-color: #00b2d4;"></div>
-								<div style="background-color: #7f00ff;"></div>
-								<div style="background-color: #ffcf00;"></div>
-								<div style="background-color: #00b2d4;"></div> </a>
-							</li>
-							<li><a href="" title="Test Palette">
-									<div style="background-color: #00ab00;"></div>
-									<div style="background-color: #00b2d4;"></div>
-									<div style="background-color: #7f00ff;"></div>
-									<div style="background-color: #ffcf00;"></div>
-									<div style="background-color: #00b2d4;"></div>
-							</a></li>
-							<li><a href="" title="Test Palette">
-									<div style="background-color: #00ab00;"></div>
-									<div style="background-color: #00b2d4;"></div>
-									<div style="background-color: #7f00ff;"></div>
-									<div style="background-color: #ffcf00;"></div>
-									<div style="background-color: #00b2d4;"></div>
-							</a>
-								<div>
-									<span>스모크 그린</span> <img src="images/save.png"
-										style="height: 30px; float: right;">
-								</div></li>
+						<ul id="palettes_result" class="palettes">
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- </div> -->
 	</section>
+
+	<!-- 팔레트 불러오기 시작 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			loadPalettes();
+		});
+
+		function loadPalettes() {
+			var user_seq = ${userVO.user_seq}
+			$.ajax({
+				url : "${cpath}/getMyPalettes.do",
+				type : "GET",
+				data : {
+					"user_seq" : user_seq
+				},
+				dataType : "json",
+				success : showPalettes,
+				error : function() {
+					alert("error");
+				}
+			});
+		}
+
+		function showPalettes(data) {
+			console.log(data)
+			console.log(data[1])
+			for (let i = 0; i < data.length; i++) {
+				var view = "<li>";
+				view += "<div>";
+				view += "<div class='palette_color' style='background-color: "+data[i].palette_color1+";'>";
+				view += "<span>" + data[i].palette_color1 + "</span>";
+				view += "</div>";
+				view += "<div class='palette_color' style='background-color: "+data[i].palette_color2+";'>";
+				view += "<span>" + data[i].palette_color2 + "</span>";
+				view += "</div>";
+				view += "<div class='palette_color' style='background-color: "+data[i].palette_color3+";'>";
+				view += "<span>" + data[i].palette_color3 + "</span>";
+				view += "</div>";
+				view += "<div class='palette_color' style='background-color: "+data[i].palette_color4+";'>";
+				view += "<span>" + data[i].palette_color4 + "</span>";
+				view += "</div>";
+				view += "<div class='palette_color' style='background-color: "+data[i].palette_color5+";'>";
+				view += "<span>" + data[i].palette_color5 + "</span>";
+				view += "</div>";
+				view += "</div>";
+				view += "<a href='${cpath}/colorDetail.do?idx=${vo.idx}' class='palettes_name'>" + data[i].palette_name + "</a>";
+				view += "<a onclick='deleteMyPalette(" + data[i].palette_seq + ")' style='cursor: pointer;'>삭제하기</a>";
+				view += "</li>";
+				$("#palettes_result").append(view);
+			}
+		}
+
+		// 클릭시 복사
+		$(document).on("click", ".palette_color", function() {
+			var tmp = document.createElement("textarea");
+			document.body.append(tmp);
+			tmp.value = $(this).children().html();
+			tmp.select();
+			document.execCommand('copy');
+			document.body.removeChild(tmp);
+			$(this).children().html("Copied!");
+		});
+
+		// 마우스 호버 헥스코드 표시/초기화
+		var tmp_code
+		$(document).on("mouseenter", ".palette_color", function() {
+			tmp_code = $(this).children().html();
+			$(this).children().css("color", getColorByLuma(tmp_code))
+			$(this).children().css("display", "inline");
+		});
+		$(document).on("mouseleave", ".palette_color", function() {
+			$(this).children().css("display", "none");
+			$(this).children().html(tmp_code);
+		});
+		
+		// 밝기 값에 따라서 텍스트 색상 변경
+	    function getColorByLuma(hexColor) {
+	      const c = hexColor.substring(1)      // 색상 앞의 # 제거
+	      const rgb = parseInt(c, 16)   // rrggbb를 10진수로 변환
+	      const r = (rgb >> 16) & 0xff  // red 추출
+	      const g = (rgb >>  8) & 0xff  // green 추출
+	      const b = (rgb >>  0) & 0xff  // blue 추출
+	      const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
+	      // 색상 선택
+	      return luma < 127.5 ? "white" : "black"
+	    }
+		
+		// 팔레트 삭제
+		function deleteMyPalette(seq) {
+			$.ajax({
+				url : "${cpath}/deleteMyPalette.do",
+				type : "get",
+				data : {
+					"seq" : seq
+				},
+				success : function(){location.reload();},
+				error : function() {
+					alert("error")
+				}
+			})
+		}
+		
+	</script>
+	<!-- 팔레트 불러오기 끝 -->
 </body>
 </html>

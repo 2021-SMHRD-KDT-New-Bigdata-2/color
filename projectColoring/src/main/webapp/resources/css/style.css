@@ -70,7 +70,7 @@ a, a:hover, a:focus, a:active, a.active {
 }
 
 section {
-	padding: 35px 0 60px;
+	padding: 35px 0 40px;
 }
 
 
@@ -174,25 +174,32 @@ section {
 		background-color: #222;
 		padding: 10px 0
 	}
+	.navbar-nav>li {
+		display: block;
+	}
+	
     .navbar-nav>li>a {
         padding-top: 15px;
         padding-bottom: 4px;
     }
-}
+
     .bycolor>li>div{
         width: 36px;
         height: 36px;
         border-radius: 50%;
         float: left;
-        margin-left: 10px;
+        display: inline-block;
     }
     
     .bycolor{
         list-style:none;
-        padding-left:0px;
-        width: 600px;
-        margin-left: auto;
-        margin-right: auto;
+        padding: 0px;
+        width: 80%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 5px;
+        max-width: 600px;
     }
 
     .color-palettes-list>color-box{
@@ -201,6 +208,10 @@ section {
         display: flex;
         overflow: hidden;
         border-radius: 5px;
+    }
+    
+    .palette-search-form {
+    	margin-top: 40px;
     }
 
 
@@ -260,22 +271,23 @@ section {
     padding-bottom: 40px;
     padding-top: 40px;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1100px;
     padding-left: 0px;
     padding-right: 0px;
-    margin-top: 10%;
+    margin-top: 0%;
  }
  .palettes{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 40px;
     list-style: none;
+    padding: 0px;
  }
  .palettes>li{
     display: block;
     width: 100%;
  }
- .palettes>li>a{
+ .palettes>li>div{
     width: 100%;
     padding: 0;
     display: flex;
@@ -283,9 +295,21 @@ section {
     border-radius: 5px;
     box-shadow: 0 0 2px rgb(0 0 0 / 10%);
  }
- .palettes>li>a>div{
+ .palettes>li>div>div{
     height: 50px;
     flex: 1;
+ }
+ 
+ .palette_color > span {
+ 	display: none;
+ 	line-height: 47px;
+ 	vertical-align: middle;
+ 	margin-left: 10px;
+ 	margin-right: 10px;
+ }
+ 
+ #palettes_result {
+ 	padding: 0px;
  }
 
 
@@ -505,6 +529,7 @@ figure.effect-bubba:hover p {
 
 .light-bg {
     background: #f1f1f1;
+    border-radius: 8px;
 }
 
 /*--------------------

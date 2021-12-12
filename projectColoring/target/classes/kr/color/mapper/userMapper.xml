@@ -3,13 +3,15 @@
 <mapper namespace="kr.color.mapper.userMapper">
 
 	<insert id="register" parameterType="kr.color.domain.UserInfo">
-		insert into 
+		insert into
 		userInfo(user_id,user_pwd,user_name,user_email,user_phone,admin_yn)
 		values(#{user_id},#{user_pwd},#{user_name},#{user_email},#{user_phone},"N")
 	</insert>
-	
-	<select id="login" parameterType="kr.color.domain.UserInfo" resultType="kr.color.domain.UserInfo">
-	    select * from userInfo where user_id=#{user_id} and user_pwd=#{user_pwd};
+
+	<select id="login" parameterType="kr.color.domain.UserInfo"
+		resultType="kr.color.domain.UserInfo">
+		select * from userInfo where user_id=#{user_id} and
+		user_pwd=#{user_pwd};
 	</select>
-	
+
 </mapper>

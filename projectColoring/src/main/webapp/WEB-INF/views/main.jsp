@@ -10,13 +10,10 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="${cpath}/resources/css/style.css" />
-<link rel="stylesheet" href="${cpath}/resources/css/style1.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="${cpath}/resources/css/style.css" />
+<link rel="stylesheet" href="${cpath}/resources/css/style1.css" />
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -110,6 +107,7 @@
 	top: 150%;
 	left: 50%;
 	margin-left: -60px;
+	z-index: 500;
 }
 
 .colorDiv .tooltip-bottom::after {
@@ -117,6 +115,7 @@
 	left: 50%;
 	margin-left: -5px;
 	border-color: transparent transparent black transparent;
+	z-index: 500;
 }
 /* 아래쪽 툴팁 끝 */
 </style>
@@ -151,12 +150,12 @@
 								aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="login-form" style="margin-bottom: 10%">
-									<div style="text-align: center; margin-bottom: 10%;">
-										<img src="${cpath}/resources/images/colorLogo.png"
-											style="width: 50%; height: 50%;"> <img
-											src="${cpath}/resources//images/coloringLogo_small.png"
-											style="width: 50%; height: 50%;">
-									</div>
+										<div style="text-align: center; margin-bottom: 10%;">
+											<img src="${cpath}/resources/images/colorLogo.png"
+												style="width: 50%; height: 50%;"> <img
+												src="${cpath}/resources//images/coloringLogo_small.png"
+												style="width: 50%; height: 50%;">
+										</div>
 										<form action="${cpath}/Login.do" method="post">
 											<input type="text" name="user_id" class="text-field"
 												placeholder="아이디"> <input type="password"
@@ -190,7 +189,7 @@
 		<div class="container">
 			<!-- 텍스트 입력부 시작 -->
 			<section id="about" class="mz-module">
-				<div class="container light-bg">
+				<div class="light-bg">
 					<div class="row">
 						<div class="col-lg-12 text-center">
 							<div class="section-title">
@@ -203,79 +202,79 @@
 									<li>
 										<div class="colorDiv" id="red"
 											style="background-color: #ff2000; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Red</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="orange"
 											style="background-color: #ff7c00; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Orange</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="hotpink"
 											style="background-color: #f52394; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Hot Pink</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="purple"
 											style="background-color: purple; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Purple</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="blue"
 											style="background-color: blue; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Blue</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="sky"
 											style="background-color: #00b2d4; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Sky</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="green"
 											style="background-color: #00ab00; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Green</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="greenyellow"
 											style="background-color: #90e200; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Green Yellow</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="yellow"
 											style="background-color: #ffcf00; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Yellow</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="violet"
 											style="background-color: #7f00ff; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Violet</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="gray"
 											style="background-color: #c4c4c4; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Gray</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="brown"
 											style="background-color: #593111; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">Brown</span>
 										</div>
 									</li>
 									<li>
 										<div class="colorDiv" id="white"
 											style="background-color: white; border: 1px solid black; cursor: pointer;">
-											<span class="tooltiptext tooltip-bottom">툴팁 테스트</span>
+											<span class="tooltiptext tooltip-bottom">White</span>
 										</div>
 									</li>
 
@@ -284,7 +283,8 @@
 						</div>
 					</div>
 
-					<form onsubmit="return false" style="margin-top: 40px">
+					<form class="palette-search-form" onsubmit="return false"
+						style="margin-top: 40px">
 						<div class="input-group" style="margin: 0% 20% 0% 20%;">
 							<input onkeypress="if( event.keyCode==13 ){sendInput();}"
 								id="inputText" type="text" class="form-control"
@@ -298,26 +298,40 @@
 							</div>
 						</div>
 					</form>
-					<div class="palettes_list" style="margin-top: 0%;">
+					<div class="palettes_list">
 						<ul id="palettes_result" class="palettes">
 						</ul>
 					</div>
 				</div>
 			</section>
-
-			<div class="palettes_list" style="margin-top: 0%">
-				<ul class="palettes">
-					<c:forEach var="vo" items="${list}">
-						<li><a>
-								<div style="background-color: ${vo.palette_color1};"></div>
-								<div style="background-color: ${vo.palette_color2};"></div>
-								<div style="background-color: ${vo.palette_color3};"></div>
-								<div style="background-color: ${vo.palette_color4};"></div>
-								<div style="background-color: ${vo.palette_color5};"></div>
-						</a></li>
-					</c:forEach>
-				</ul>
-			</div>
+		</div>
+		<div class="palettes_list">
+			<ul class="palettes">
+				<c:forEach var="vo" items="${list}">
+					<li><div>
+							<div class="palette_color"
+								style="background-color: ${vo.palette_color1};">
+								<span>${vo.palette_color1}</span>
+							</div>
+							<div class="palette_color"
+								style="background-color: ${vo.palette_color2};">
+								<span>${vo.palette_color2}</span>
+							</div>
+							<div class="palette_color"
+								style="background-color: ${vo.palette_color3};">
+								<span>${vo.palette_color3}</span>
+							</div>
+							<div class="palette_color"
+								style="background-color: ${vo.palette_color4};">
+								<span>${vo.palette_color4}</span>
+							</div>
+							<div class="palette_color"
+								style="background-color: ${vo.palette_color5};">
+								<span>${vo.palette_color5}</span>
+							</div>
+						</div></li>
+				</c:forEach>
+			</ul>
 		</div>
 	</section>
 
@@ -472,7 +486,7 @@
 				return false;
 			}
 			$.ajax({
-				url : "${cpath}//genPalette.do",
+				url : "${cpath}/genPalette.do",
 				type : "get",
 				data : {
 					"inputText" : inputText
@@ -487,13 +501,24 @@
 		function showPalResult(data) {
 			for (var i = 0; i < 4; i++) {
 				var view = "<li>";
-				view += "<a href='' title=''>";
-				view += "<div style='background-color: "+data[i].palette_color1+";'></div>";
-				view += "<div style='background-color: "+data[i].palette_color2+";'></div>";
-				view += "<div style='background-color: "+data[i].palette_color3+";'></div>";
-				view += "<div style='background-color: "+data[i].palette_color4+";'></div>";
-				view += "<div style='background-color: "+data[i].palette_color5+";'></div>";
-				view += "</a>";
+				view += "<div>";
+				view += "<div class='palette_color' style='background-color: "+data[i].palette_color1+";'>";
+				view += "<span>" + data[i].palette_color1 + "</span>";
+				view += "</div>";
+				view += "<div class='palette_color' style='background-color: "+data[i].palette_color2+";'>";
+				view += "<span>" + data[i].palette_color2 + "</span>";
+				view += "</div>";
+				view += "<div class='palette_color' style='background-color: "+data[i].palette_color3+";'>";
+				view += "<span>" + data[i].palette_color3 + "</span>";
+				view += "</div>";
+				view += "<div class='palette_color' style='background-color: "+data[i].palette_color4+";'>";
+				view += "<span>" + data[i].palette_color4 + "</span>";
+				view += "</div>";
+				view += "<div class='palette_color' style='background-color: "+data[i].palette_color5+";'>";
+				view += "<span>" + data[i].palette_color5 + "</span>";
+				view += "</div>";
+				view += "</div>";
+				view += "<a class='savePalette' style='cursor: pointer;'>저장하기</a>"
 				view += "</li>";
 				$("#palettes_result").append(view).children(':last').hide()
 						.fadeIn();
@@ -512,6 +537,77 @@
 		$(document).ready(function() {
 			$(".colorDiv").tooltip();
 		});
+
+		// 클릭시 복사
+		$(document).on("click", ".palette_color", function() {
+			var tmp = document.createElement("textarea");
+			document.body.append(tmp);
+			tmp.value = $(this).children().html();
+			tmp.select();
+			document.execCommand('copy');
+			document.body.removeChild(tmp);
+			$(this).children().html("Copied!");
+		});
+
+		// 마우스 호버 헥스코드 표시/초기화
+		var tmp_code
+		$(document).on("mouseenter", ".palette_color", function() {
+			tmp_code = $(this).children().html();
+			$(this).children().css("color", getColorByLuma(tmp_code))
+			$(this).children().css("display", "inline");
+		});
+		$(document).on("mouseleave", ".palette_color", function() {
+			$(this).children().css("display", "none");
+			$(this).children().html(tmp_code);
+		});
+
+		// 밝기 값에 따라서 텍스트 색상 변경
+	    function getColorByLuma(hexColor) {
+	      const c = hexColor.substring(1)      // 색상 앞의 # 제거
+	      const rgb = parseInt(c, 16)   // rrggbb를 10진수로 변환
+	      const r = (rgb >> 16) & 0xff  // red 추출
+	      const g = (rgb >>  8) & 0xff  // green 추출
+	      const b = (rgb >>  0) & 0xff  // blue 추출
+	      const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
+	      // 색상 선택
+	      return luma < 127.5 ? "white" : "black"
+	    }
+		
+		// 저장하기 기능
+		$(document).on("click",".savePalette",function(){
+			var palette_color1 = $(this).parent().find('div:eq(0)').find('div:eq(0)').children().html();
+			var palette_color2 = $(this).parent().find('div:eq(0)').find('div:eq(1)').children().html();
+			var palette_color3 = $(this).parent().find('div:eq(0)').find('div:eq(2)').children().html();
+			var palette_color4 = $(this).parent().find('div:eq(0)').find('div:eq(3)').children().html();
+			var palette_color5 = $(this).parent().find('div:eq(0)').find('div:eq(4)').children().html();
+			var palette_name = $("#inputText").val();
+			var user_seq = "${userVO.user_seq}";
+			$.ajax({
+				url : "insertMyPalettes.do",
+				type : "POST",
+				
+				data : {
+					"palette_name" : palette_name,
+					"palette_color1" : palette_color1,
+					"palette_color2" : palette_color2,
+					"palette_color3" : palette_color3,
+					"palette_color4" : palette_color4,
+					"palette_color5" : palette_color5,
+					"user_seq" : user_seq
+				},
+				dataType : "text",
+				success : function(res){
+					console.log(res)
+					alert("success");
+				},
+				error : function(err) {
+					console.log(err)
+					alert("fail");
+				}
+			});
+		})
+		
+		
 	</script>
 </body>
 </html>

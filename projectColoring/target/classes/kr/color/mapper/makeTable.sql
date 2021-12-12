@@ -1,30 +1,39 @@
 use color;
-INSERT INTO userInfo (user_id, user_pwd, user_name, user_email, user_phone, user_joindate, admin_yn) VALUES ('userId01', '1234', '김기연', 'user_email 1', '010-7583-4193', NOW(), 'N');
-INSERT INTO userInfo (user_id, user_pwd, user_name, user_email, user_phone, user_joindate, admin_yn) VALUES ('userId02', '1234', '김동윤', 'user_email 2', '010-4583-2519', NOW(), 'N');
-INSERT INTO userInfo (user_id, user_pwd, user_name, user_email, user_phone, user_joindate, admin_yn) VALUES ('userId03', '1234', '서찬민', 'user_email 3', '010-7979-8315', NOW(), 'N');
-INSERT INTO userInfo (user_id, user_pwd, user_name, user_email, user_phone, user_joindate, admin_yn) VALUES ('userId04', '1234', '박지현', 'user_email 4', '010-7143-5797', NOW(), 'N');
-INSERT INTO userInfo (user_id, user_pwd, user_name, user_email, user_phone, user_joindate, admin_yn) VALUES ('userId05', '1234', '양준현', 'user_email 5', '010-2910-2784', NOW(), 'N');
+INSERT INTO userPalettes (palette_name, palette_color1, palette_color2, palette_color3, palette_color4, palette_color5, `regdit_date`, user_seq) 
+VALUES ('a beach on the sun', '#e75e70', '#f2e9e4', '#f2a176', '#f0c96e','#e2e76f', NOW(), 1);
+INSERT INTO userPalettes (palette_name, palette_color1, palette_color2, palette_color3, palette_color4, palette_color5, `regdit_date`, user_seq)
+VALUES ('a better pink', '#580035', '#972757', '#eb0081', '#f24b90','#fb81b0', NOW(), 1);
+INSERT INTO userPalettes (palette_name, palette_color1, palette_color2, palette_color3, palette_color4, palette_color5, `regdit_date`, user_seq)
+VALUES ('a bit of fluff', '#efd4a7', '#fff8a0', '#e3de9c', '#bfc5b9','#c089b1', NOW(), 1);
+INSERT INTO userPalettes (palette_name, palette_color1, palette_color2, palette_color3, palette_color4, palette_color5, `regdit_date`, user_seq)
+VALUES ('a boring grey winter', '#dfe4dd', '#04090d', '#191c21', '#bab4a4','#e7e7cb', NOW(), 1);
+INSERT INTO userPalettes (palette_name, palette_color1, palette_color2, palette_color3, palette_color4, palette_color5, `regdit_date`, user_seq)
+VALUES ('a childs daydreams', '#fbfecf', '#a8eff5', '#f2d3ff', '#e6a0c5','#efccc8', NOW(), 1);
 
 
 select * from userInfo where user_id='userId01' and user_pwd='1234'
 
-
 delete from userInfo where user_id='userId05'
 use color;
-select * from userInfo
--- userInfo table 생성 --
-CREATE TABLE userInfo
+select * from userPalettes;
+-- userPalettes 생성 --
+use color;
+CREATE TABLE userPalettes
 (
-    `user_id`        VARCHAR(20)     NOT NULL    COMMENT '사용자 아이디', 
-    `user_pwd`       VARCHAR(20)     NOT NULL    COMMENT '사용자 비밀번호', 
-    `user_name`      VARCHAR(20)     NOT NULL    COMMENT '사용자 이름', 
-    `user_email`     VARCHAR(50)     NOT NULL    COMMENT '사용자 이메일', 
-    `user_phone`     VARCHAR(20)     NOT NULL    COMMENT '사용자 연락처', 
-    `user_joindate`  DATETIME        NOT NULL    DEFAULT NOW() COMMENT '사용자 가입일자', 
-    `admin_yn`       VARCHAR(1)      NOT NULL    COMMENT '관리자 여부', 
-    `user_seq`       INT UNSIGNED    NOT NULL    AUTO_INCREMENT COMMENT '사용자 순번', 
-     PRIMARY KEY (user_seq)
+    `palette_seq`      INT UNSIGNED    NOT NULL    AUTO_INCREMENT,
+    `palette_name`     VARCHAR(20)     NOT NULL,
+    `palette_color1`     VARCHAR(20)     NOT NULL, 
+    `palette_color2`     VARCHAR(20)     NOT NULL, 
+    `palette_color3`     VARCHAR(20)     NOT NULL, 
+    `palette_color4`     VARCHAR(20)     NOT NULL, 
+    `palette_color5`     VARCHAR(20)      NOT NULL,
+	`regdit_date`	DATETIME	NOT NULL	DEFAULT NOW(),
+    `user_seq`       VARCHAR(1)      NOT NULL, 
+     PRIMARY KEY (`palette_seq`)
 );
 
 use color;
-select * from paintmanagement;
+select * from userInfo;
+insert into
+	    colorMap(color_seq,color_name,color_hex,color_description,color_user_seq)
+	    values(#{color_seq},#{color_name},#{color_hex},#{color_description},#{color_user_seq})

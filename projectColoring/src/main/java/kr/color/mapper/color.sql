@@ -21,3 +21,6 @@ show tables;
 select * from palettes;
 
 show databases
+
+use color;
+select * from userPalettes;
