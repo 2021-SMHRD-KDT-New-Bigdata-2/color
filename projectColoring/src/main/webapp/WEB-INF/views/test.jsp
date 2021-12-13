@@ -131,6 +131,7 @@
 .result > span {
 	padding-left: 8px;
 }
+
 /* 아래쪽 툴팁 끝 */
 </style>
 <!-- Style 끝 -->
@@ -306,19 +307,24 @@ function sendInput() {
 			//el.innerHTML += "<button id='inputXbtn'>"+"x"+"</button>"
 			//el.innerHTML += "</div>"
 			//searchDiv.appendChild(el);
-			//searchDiv.innerHTML += "<div><button id='inputTbtn'>"+inputText1+"</button>"
-			//searchDiv.innerHTML += "<button id='inputXbtn'>"+"x"+"</button></div>"
 			var view = "<div class='result'>"
 			view += "<span id='inputTbtn'>"+inputText1+"</span>"
 			view += "<span id='inputXbtn'>X</span>"
 			view += "</div>"
 			$("#message1").append(view).children(':last').hide().fadeIn();
+			var target = document.getElementById("inputText")
+			target.style.textDecoration = 'underline red';
+			target.style.textDecorationStyle = "dotted";
+			
+			
 		}
 		
 		
 }
 	//inputTbtn 눌렀을 때 검색창에 결과 적용, 이후 내용 삽입
 	$(document).on("click","#inputTbtn",function(){
+		var target1 = document.getElementById("inputText")
+		target1.style.textDecoration = 'none';
 		var copyT = document.createElement("textarea");
 		document.body.append(copyT);
 		copyT.value = $(this).html();
@@ -326,9 +332,12 @@ function sendInput() {
 		$("#inputText").val(copyT.value);
 		document.body.removeChild(copyT);
 		$('div#message1').html('')
+		
 	});
 	//inputXbtn 그냥 삭제
 	$(document).on("click","#inputXbtn",function(){
+		var target2 = document.getElementById("inputText")
+		target2.style.textDecoration = 'none';
 		//$('div').remove('#message1');
 		this.parentElement.remove();
 	});
