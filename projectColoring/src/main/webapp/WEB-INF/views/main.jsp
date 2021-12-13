@@ -119,7 +119,7 @@
 	z-index: 500;
 }
 
-#PaletteName{
+#PaletteName {
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 18px;
 }
@@ -128,8 +128,10 @@
 </style>
 <!-- Style 끝 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,300&family=Ubuntu&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,300&family=Ubuntu&display=swap"
+	rel="stylesheet">
 </head>
 <body id="page-top">
 	<!-- 상단 로그인, 로그아웃 바 시작 -->
@@ -337,7 +339,8 @@
 								style="background-color: ${vo.palette_color5};">
 								<span class="hex">${vo.palette_color5}</span>
 							</div>
-						</div> <a id="PaletteName" style="text-transform: capitalize;">${PList[vo.palette_seq].txt_content}</a></li>
+						</div> <a id="PaletteName" class="savePaletteRandom"
+						style="text-transform: capitalize; cursor: pointer;">${PList[vo.palette_seq].txt_content}</a></li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -345,19 +348,6 @@
 
 	<!-- Bootstrap core JavaScript-->
 	<script type="text/javascript">
-		//랜덤생성 팔레트 이름 받아오기
-		/* $(document).ready(function() {
-			$.ajax({
-				url : "${cpath}/getPaletteName.do",
-				type : "get",
-				dataType : "json",
-				success : "ok",
-				error : function() {
-					alert("팔레트 이름 생성 오류");
-				}
-			});
-		}); */
-
 		//입력받은 값으로 팔레트 생성
 		function sendInput() {
 			var inputText = $("#inputText").val();
@@ -459,7 +449,7 @@
 			return luma < 127.5 ? "white" : "black"
 		}
 
-		// 저장하기 기능
+		// 저장하기 기능(검색결과)
 		$(document).on(
 				"click",
 				".savePalette",
@@ -490,13 +480,53 @@
 							"user_seq" : user_seq
 						},
 						dataType : "text",
-						success : function(res) {
+						success : function() {
 							console.log(res)
 							alert("success");
 						},
-						error : function(err) {
-							console.log(err)
-							alert("fail");
+						error : function() {
+							alert("로그인이 필요한 서비스입니다.");
+							document.querySelector("#loginBtn").click();
+						}
+					});
+				})
+
+		// 저장하기 기능(랜덤생성)
+		$(document).on(
+				"click",
+				".savePaletteRandom",
+				function() {
+					var palette_color1 = $(this).parent().find('div:eq(0)')
+							.find('div:eq(0)').children().html();
+					var palette_color2 = $(this).parent().find('div:eq(0)')
+							.find('div:eq(1)').children().html();
+					var palette_color3 = $(this).parent().find('div:eq(0)')
+							.find('div:eq(2)').children().html();
+					var palette_color4 = $(this).parent().find('div:eq(0)')
+							.find('div:eq(3)').children().html();
+					var palette_color5 = $(this).parent().find('div:eq(0)')
+							.find('div:eq(4)').children().html();
+					var palette_name = $(this).html();
+					var user_seq = "${userVO.user_seq}";
+					$.ajax({
+						url : "insertMyPalettes.do",
+						type : "POST",
+						data : {
+							"palette_name" : palette_name,
+							"palette_color1" : palette_color1,
+							"palette_color2" : palette_color2,
+							"palette_color3" : palette_color3,
+							"palette_color4" : palette_color4,
+							"palette_color5" : palette_color5,
+							"user_seq" : user_seq
+						},
+						dataType : "text",
+						success : function() {
+							alert("내 정보에 저장되었습니다.");
+						},
+						error : function() {
+							alert("로그인이 필요한 서비스입니다.");
+							document.querySelector("#loginBtn").click();
 						}
 					});
 				})

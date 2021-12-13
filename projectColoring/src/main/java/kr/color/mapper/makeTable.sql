@@ -18,6 +18,7 @@ use color;
 select * from inputText;
 -- userPalettes 생성 --
 use color;
+select * from userPalettes
 CREATE TABLE userPalettes
 (
     `palette_seq`      INT UNSIGNED    NOT NULL    AUTO_INCREMENT,
