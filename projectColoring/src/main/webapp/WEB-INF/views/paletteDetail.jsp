@@ -184,13 +184,17 @@ th {
 					<b>SAVED NAME : ${vo.palette_name}</b>
 				</h2>
 				<table>
+					<colgroup>
+						<col width="20%">
+						<col width="70%">
+					</colgroup>
 					<tbody>
 						<tr>
 							<th>Color</th>
 							<th>Information</th>
 						</tr>
 						<tr>
-							<td class="color-pre" style="text-align: right;"><span
+							<td class="color-pre" style="text-align: center;"><span
 								class="color-display" style="background: ${vo.palette_color1};">
 							</span></td>
 							<td>
@@ -206,7 +210,7 @@ th {
 							</td>
 						</tr>
 						<tr>
-							<td class="color-pre" style="text-align: right;"><span
+							<td class="color-pre" style="text-align: center;"><span
 								class="color-display" style="background: ${vo.palette_color2};">
 							</span></td>
 							<td>
@@ -222,7 +226,7 @@ th {
 							</td>
 						</tr>
 						<tr>
-							<td class="color-pre" style="text-align: right;"><span
+							<td class="color-pre" style="text-align: center;"><span
 								class="color-display" style="background: ${vo.palette_color3};">
 							</span></td>
 							<td>
@@ -238,7 +242,7 @@ th {
 							</td>
 						</tr>
 						<tr>
-							<td class="color-pre" style="text-align: right;"><span
+							<td class="color-pre" style="text-align: center;"><span
 								class="color-display" style="background: ${vo.palette_color4};">
 							</span></td>
 							<td>
@@ -254,7 +258,7 @@ th {
 							</td>
 						</tr>
 						<tr>
-							<td class="color-pre" style="text-align: right;"><span
+							<td class="color-pre" style="text-align: center;"><span
 								class="color-display" style="background: ${vo.palette_color5};">
 							</span></td>
 							<td>
