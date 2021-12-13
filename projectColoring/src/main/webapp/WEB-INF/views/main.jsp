@@ -380,7 +380,7 @@
 		function translate(lang_code, txt_content) {
 			if (lang_code == "en") {
 				sendInput(txt_content);
-				return False
+				return false;
 			}
 			$.ajax({
 				url : "https://dapi.kakao.com/v2/translation/translate",
