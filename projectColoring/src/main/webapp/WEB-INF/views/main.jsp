@@ -296,11 +296,11 @@
 					<form class="palette-search-form" onsubmit="return false"
 						style="margin-top: 40px">
 						<div class="input-group" style="margin: 0% 20% 0% 20%;">
-							<input onkeypress="if( event.keyCode==13 ){sendInput();}"
+							<input onkeypress="if( event.keyCode==13 ){detectLang();}"
 								id="inputText" type="text" class="form-control"
 								placeholder="Search" style="height: 40px;">
 							<div class="input-group-btn">
-								<button onclick="sendInput()" class="btn btn-default"
+								<button onclick="detectLang()" class="btn btn-default"
 									type="button" id="searchColorBtn"
 									style="border: 1px solid #C0C0C0; height: 40px">
 									<i class="glyphicon glyphicon-search"></i>
@@ -348,19 +348,76 @@
 
 	<!-- Bootstrap core JavaScript-->
 	<script type="text/javascript">
-		//입력받은 값으로 팔레트 생성
-		function sendInput() {
-			var inputText = $("#inputText").val();
-			if (inputText == "") {
-				alert("텍스트를 입력해주세요.");
-				$("#inputText").focus();
-				return false;
+		function detectLang() {
+			$
+					.ajax({
+						url : "https://dapi.kakao.com/v3/translation/language/detect",
+						type : "POST",
+						contentType : "application/x-www-form-urlencoded",
+						headers : {
+							"Authorization" : "KakaoAK 9b454e2d908098fe6dce2388f31113db"
+						},
+						data : {
+							query : $("#inputText").val()
+						},
+						success : function(data) {
+							console.log("언어 감지 완료");
+							let txt_content = $("#inputText").val();
+							console.log(txt_content);
+							var lang_code = data.language_info[0].code;
+							translate(lang_code, txt_content);
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							console.log("언어 감지 실패")
+							var errorMsg = "Ready Status: ";
+							errorMsg += jqXHR.readyState + "\n";
+							errorMsg += "Status Text:";
+							errorMsg += jqXHR.readystatusText + "\n";
+							alert(errorMsg);
+						}
+					});
+		}
+
+		function translate(lang_code, txt_content) {
+			if (lang_code == "en") {
+				sendInput(txt_content);
+				return False
 			}
+			$
+					.ajax({
+						url : "https://dapi.kakao.com/v2/translation/translate",
+						type : "POST",
+						contentType : "application/x-www-form-urlencoded",
+						headers : {
+							"Authorization" : "KakaoAK 9b454e2d908098fe6dce2388f31113db"
+						},
+						data : {
+							query : txt_content,
+							src_lang : lang_code,
+							target_lang : "en"
+						},
+						success : function(data) {
+							console.log("언어 번역 완료");
+							var txt_translated = data.translated_text[0][0];
+							console.log(txt_translated);
+							sendInput(txt_translated);
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							console.log("언어 번역 실패")
+							var errorMsg = "Ready Status: ";
+							errorMsg += jqXHR.readyState + "\n";
+							errorMsg += "Status Text:";
+							errorMsg += jqXHR.readystatusText + "\n";
+							alert(errorMsg);
+						}
+					});
+		}
+		function sendInput(txt_translated) {
 			$.ajax({
-				url : "${cpath}/genPalette.do",
+				url : "${cpath}//genPalette.do",
 				type : "get",
 				data : {
-					"inputText" : inputText
+					"inputText" : txt_translated
 				},
 				dataType : "json",
 				success : showPalResult,
@@ -369,6 +426,7 @@
 				}
 			});
 		}
+
 		function showPalResult(data) {
 			for (var i = 0; i < 4; i++) {
 				var view = "<li>";
@@ -534,7 +592,7 @@
 
 		// 히오스
 		// 검색버튼 클릭시 생성
-		$("#searchColorBtn").on("click", function(){
+		$("#searchColorBtn").on("click", function() {
 			$(".light-bg").LoadingOverlay("show");
 		})
 	</script>
