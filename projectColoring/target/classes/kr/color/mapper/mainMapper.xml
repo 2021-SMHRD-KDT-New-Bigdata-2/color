@@ -27,4 +27,8 @@
 	<select id="paletteDetail" parameterType="int" resultType="kr.color.domain.userPalettes">
 	    select * from userPalettes where palette_seq=#{seq};
 	</select>
+	
+	<select id="getPaletteName" resultType="kr.color.domain.InputText">
+	    select txt_content from inputText ;
+	</select>
 </mapper>

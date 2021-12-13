@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.color.domain.InputText;
 import kr.color.domain.Palettes;
 import kr.color.domain.userPalettes;
 import kr.color.mapper.mainMapper;
@@ -48,4 +49,5 @@ public class AjaxController {
 		mapper.insertMyPalettes(vo);
 		return "ok";
 	}
+	
 }

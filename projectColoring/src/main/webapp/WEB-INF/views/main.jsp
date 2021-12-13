@@ -11,6 +11,10 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="${cpath}/resources/js/loadingoverlay.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="${cpath}/resources/css/icons.css" />
 <link rel="stylesheet" href="${cpath}/resources/css/style.css" />
 <link rel="stylesheet" href="${cpath}/resources/css/style1.css" />
 <head>
@@ -308,7 +312,7 @@
 					<li><div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color1};">
-								<span class="hex">${vo.palette_color1}</span>
+								<span class="hex">${vo.palette_color1}</span> <a href="#"></a>
 							</div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color2};">
@@ -326,155 +330,28 @@
 								style="background-color: ${vo.palette_color5};">
 								<span class="hex">${vo.palette_color5}</span>
 							</div>
-						</div></li>
+						</div> <a style="text-transform: capitalize;">${PList[vo.palette_seq].txt_content}</a></li>
 				</c:forEach>
 			</ul>
 		</div>
 	</section>
 
-
-	<!-- Modal for portfolio item 1 -->
-	<div class="modal fade" id="Modal-1" tabindex="-1" role="dialog"
-		aria-labelledby="Modal-label-1">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="Modal-label-1">Dean & Letter</h4>
-				</div>
-				<div class="modal-body">
-					<img src="${cpath}/resources/images/demo/portfolio-1.jpg"
-						alt="img01" class="img-responsive" />
-					<div class="modal-works">
-						<span>Branding</span><span>Web Design</span>
-					</div>
-					<p>Temporibus autem quibusdam et aut officiis debitis aut rerum
-						necessitatibus saepe</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Modal for portfolio item 2 -->
-	<div class="modal fade" id="Modal-2" tabindex="-1" role="dialog"
-		aria-labelledby="Modal-label-2">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="Modal-label-2">Startup Framework</h4>
-				</div>
-				<div class="modal-body">
-					<img src="${cpath}/resources/images/demo/portfolio-2.jpg"
-						alt="img01" class="img-responsive" />
-					<div class="modal-works">
-						<span>Branding</span><span>Web Design</span>
-					</div>
-					<p>Temporibus autem quibusdam et aut officiis debitis aut rerum
-						necessitatibus saepe</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Modal for portfolio item 3 -->
-	<div class="modal fade" id="Modal-3" tabindex="-1" role="dialog"
-		aria-labelledby="Modal-label-3">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="Modal-label-3">Lamp & Velvet</h4>
-				</div>
-				<div class="modal-body">
-					<img src="${cpath}/resources/images/demo/portfolio-3.jpg"
-						alt="img01" class="img-responsive" />
-					<div class="modal-works">
-						<span>Branding</span><span>Web Design</span>
-					</div>
-					<p>Temporibus autem quibusdam et aut officiis debitis aut rerum
-						necessitatibus saepe</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Modal for portfolio item 4 -->
-	<div class="modal fade" id="Modal-4" tabindex="-1" role="dialog"
-		aria-labelledby="Modal-label-4">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="Modal-label-4">Smart Name</h4>
-				</div>
-				<div class="modal-body">
-					<img src="${cpath}/resources/images/demo/portfolio-4.jpg"
-						alt="img01" class="img-responsive" />
-					<div class="modal-works">
-						<span>Branding</span><span>Web Design</span>
-					</div>
-					<p>Temporibus autem quibusdam et aut officiis debitis aut rerum
-						necessitatibus saepe</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Modal for portfolio item 5 -->
-	<div class="modal fade" id="Modal-5" tabindex="-1" role="dialog"
-		aria-labelledby="Modal-label-5">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="Modal-label-5">Fast People</h4>
-				</div>
-				<div class="modal-body">
-					<img src="${cpath}/resources/images/demo/portfolio-5.jpg"
-						alt="img01" class="img-responsive" />
-					<div class="modal-works">
-						<span>Branding</span><span>Web Design</span>
-					</div>
-					<p>Temporibus autem quibusdam et aut officiis debitis aut rerum
-						necessitatibus saepe</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<!-- Bootstrap core JavaScript-->
 	<script type="text/javascript">
+		//랜덤생성 팔레트 이름 받아오기
+		/* $(document).ready(function() {
+			$.ajax({
+				url : "${cpath}/getPaletteName.do",
+				type : "get",
+				dataType : "json",
+				success : "ok",
+				error : function() {
+					alert("팔레트 이름 생성 오류");
+				}
+			});
+		}); */
+
+		//입력받은 값으로 팔레트 생성
 		function sendInput() {
 			var inputText = $("#inputText").val();
 			if (inputText == "") {
@@ -500,19 +377,24 @@
 				var view = "<li>";
 				view += "<div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color1+";'>";
-				view += "<span class='hex'>" + data[i].palette_color1 + "</span>";
+				view += "<span class='hex'>" + data[i].palette_color1
+						+ "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color2+";'>";
-				view += "<span class='hex'>" + data[i].palette_color2 + "</span>";
+				view += "<span class='hex'>" + data[i].palette_color2
+						+ "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color3+";'>";
-				view += "<span class='hex'>" + data[i].palette_color3 + "</span>";
+				view += "<span class='hex'>" + data[i].palette_color3
+						+ "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color4+";'>";
-				view += "<span class='hex'>" + data[i].palette_color4 + "</span>";
+				view += "<span class='hex'>" + data[i].palette_color4
+						+ "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color5+";'>";
-				view += "<span class='hex'>" + data[i].palette_color5 + "</span>";
+				view += "<span class='hex'>" + data[i].palette_color5
+						+ "</span>";
 				view += "</div>";
 				view += "</div>";
 				view += "<a class='savePalette' style='cursor: pointer;'>저장하기</a>"
@@ -559,52 +441,68 @@
 		});
 
 		// 밝기 값에 따라서 텍스트 색상 변경
-	    function getColorByLuma(hexColor) {
-	      const c = hexColor.substring(1)      // 색상 앞의 # 제거
-	      const rgb = parseInt(c, 16)   // rrggbb를 10진수로 변환
-	      const r = (rgb >> 16) & 0xff  // red 추출
-	      const g = (rgb >>  8) & 0xff  // green 추출
-	      const b = (rgb >>  0) & 0xff  // blue 추출
-	      const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
-	      // 색상 선택
-	      return luma < 127.5 ? "white" : "black"
-	    }
-		
+		function getColorByLuma(hexColor) {
+			const c = hexColor.substring(1) // 색상 앞의 # 제거
+			const rgb = parseInt(c, 16) // rrggbb를 10진수로 변환
+			const r = (rgb >> 16) & 0xff // red 추출
+			const g = (rgb >> 8) & 0xff // green 추출
+			const b = (rgb >> 0) & 0xff // blue 추출
+			const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
+			// 색상 선택
+			return luma < 127.5 ? "white" : "black"
+		}
+
 		// 저장하기 기능
-		$(document).on("click",".savePalette",function(){
-			var palette_color1 = $(this).parent().find('div:eq(0)').find('div:eq(0)').children().html();
-			var palette_color2 = $(this).parent().find('div:eq(0)').find('div:eq(1)').children().html();
-			var palette_color3 = $(this).parent().find('div:eq(0)').find('div:eq(2)').children().html();
-			var palette_color4 = $(this).parent().find('div:eq(0)').find('div:eq(3)').children().html();
-			var palette_color5 = $(this).parent().find('div:eq(0)').find('div:eq(4)').children().html();
-			var palette_name = $("#inputText").val();
-			var user_seq = "${userVO.user_seq}";
-			$.ajax({
-				url : "insertMyPalettes.do",
-				type : "POST",
-				
-				data : {
-					"palette_name" : palette_name,
-					"palette_color1" : palette_color1,
-					"palette_color2" : palette_color2,
-					"palette_color3" : palette_color3,
-					"palette_color4" : palette_color4,
-					"palette_color5" : palette_color5,
-					"user_seq" : user_seq
-				},
-				dataType : "text",
-				success : function(res){
-					console.log(res)
-					alert("success");
-				},
-				error : function(err) {
-					console.log(err)
-					alert("fail");
-				}
-			});
-		})
-		
-		
+		$(document).on(
+				"click",
+				".savePalette",
+				function() {
+					var palette_color1 = $(this).parent().find('div:eq(0)')
+							.find('div:eq(0)').children().html();
+					var palette_color2 = $(this).parent().find('div:eq(0)')
+							.find('div:eq(1)').children().html();
+					var palette_color3 = $(this).parent().find('div:eq(0)')
+							.find('div:eq(2)').children().html();
+					var palette_color4 = $(this).parent().find('div:eq(0)')
+							.find('div:eq(3)').children().html();
+					var palette_color5 = $(this).parent().find('div:eq(0)')
+							.find('div:eq(4)').children().html();
+					var palette_name = $("#inputText").val();
+					var user_seq = "${userVO.user_seq}";
+					$.ajax({
+						url : "insertMyPalettes.do",
+						type : "POST",
+
+						data : {
+							"palette_name" : palette_name,
+							"palette_color1" : palette_color1,
+							"palette_color2" : palette_color2,
+							"palette_color3" : palette_color3,
+							"palette_color4" : palette_color4,
+							"palette_color5" : palette_color5,
+							"user_seq" : user_seq
+						},
+						dataType : "text",
+						success : function(res) {
+							console.log(res)
+							alert("success");
+						},
+						error : function(err) {
+							console.log(err)
+							alert("fail");
+						}
+					});
+				})
+
+		//히오스
+		$.LoadingOverlay("show", {
+			background : "rgba(0, 0, 0, 0.5)",
+			image : "",
+			maxSize : 60,
+			fontawesome : "fa fa-spinner fa-pulse fa-fw",
+			fontawesomeColor : "#FFFFFF",
+		});
+		$.LoadingOverlay("hide");
 	</script>
 </body>
 </html>

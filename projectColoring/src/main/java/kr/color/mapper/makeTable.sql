@@ -15,7 +15,7 @@ select * from userInfo where user_id='userId01' and user_pwd='1234'
 
 delete from userInfo where user_id='userId05'
 use color;
-select * from Palettes;
+select * from inputText;
 -- userPalettes 생성 --
 use color;
 CREATE TABLE userPalettes

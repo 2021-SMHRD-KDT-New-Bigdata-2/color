@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.color.domain.InputText;
 import kr.color.domain.Palettes;
 import kr.color.domain.userPalettes;
 import kr.color.mapper.mainMapper;
@@ -20,7 +21,9 @@ public class mainController {
 	@RequestMapping("/")
 	public String main(Model model) {
 		List<Palettes> list = mapper.getMainList();
+		List<InputText> PList = mapper.getPaletteName();
 		model.addAttribute("list",list);
+		model.addAttribute("PList", PList);
 		return "main";
 	}
 	
@@ -30,4 +33,5 @@ public class mainController {
 		model.addAttribute("vo",vo);
 		return "paletteDetail";
 	}
+
 }
