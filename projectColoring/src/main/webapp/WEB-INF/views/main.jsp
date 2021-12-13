@@ -396,6 +396,7 @@
 				view += "</div>";
 				view += "<a class='savePalette' style='cursor: pointer;'>저장하기</a>"
 				view += "</li>";
+				$(".light-bg").LoadingOverlay("hide", true);
 				$("#palettes_result").append(view).children(':last').hide()
 						.fadeIn();
 			}
@@ -531,15 +532,11 @@
 					});
 				})
 
-		//히오스
-		$.LoadingOverlay("show", {
-			background : "rgba(0, 0, 0, 0.5)",
-			image : "",
-			maxSize : 60,
-			fontawesome : "fa fa-spinner fa-pulse fa-fw",
-			fontawesomeColor : "#FFFFFF",
-		});
-		$.LoadingOverlay("hide");
+		// 히오스
+		// 검색버튼 클릭시 생성
+		$("#searchColorBtn").on("click", function(){
+			$(".light-bg").LoadingOverlay("show");
+		})
 	</script>
 </body>
 </html>
