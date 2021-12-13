@@ -116,6 +116,21 @@
 	border-color: transparent transparent black transparent;
 	z-index: 500;
 }
+
+.result {
+	display: inline-block;
+    vertical-align: top;
+    background: #f7f7f7;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px 15px 10px 10px;
+    border: 1px solid #d6d6d6;
+    position: relative;
+}
+
+.result > span {
+	padding-left: 8px;
+}
 /* 아래쪽 툴팁 끝 */
 </style>
 <!-- Style 끝 -->
@@ -286,24 +301,29 @@ function sendInput() {
 			$('div').remove('#message1');
 		}else{
 			var searchDiv = document.getElementById('message1');
-			var el = document.createElement("div")
-			el.innerHTML += "<button id='inputTbtn'>"+inputText1+"</button>"
-			el.innerHTML += "<button id='inputXbtn'>"+"x"+"</button>"
-			el.innerHTML += "</div>"
-			searchDiv.appendChild(el);
+			//var el = document.createElement("div")
+			//el.innerHTML += "<button id='inputTbtn'>"+inputText1+"</button>"
+			//el.innerHTML += "<button id='inputXbtn'>"+"x"+"</button>"
+			//el.innerHTML += "</div>"
+			//searchDiv.appendChild(el);
 			//searchDiv.innerHTML += "<div><button id='inputTbtn'>"+inputText1+"</button>"
 			//searchDiv.innerHTML += "<button id='inputXbtn'>"+"x"+"</button></div>"
+			var view = "<div class='result'>"
+			view += "<span id='inputTbtn'>"+inputText1+"</span>"
+			view += "<span id='inputXbtn'>X</span>"
+			view += "</div>"
+			$("#message1").append(view).children(':last').hide().fadeIn();
 		}
 		
 		
 }
-	//inputTbtn 눌렀을 때 복사, 이후 내용 삽입
+	//inputTbtn 눌렀을 때 검색창에 결과 적용, 이후 내용 삽입
 	$(document).on("click","#inputTbtn",function(){
 		var copyT = document.createElement("textarea");
 		document.body.append(copyT);
 		copyT.value = $(this).html();
-		copyT.select();
-		document.execCommand('copy');
+		// id로 검색창 가져와서 값 덮어씌우기
+		$("#inputText").val(copyT.value);
 		document.body.removeChild(copyT);
 		$('div#message1').html('')
 	});
