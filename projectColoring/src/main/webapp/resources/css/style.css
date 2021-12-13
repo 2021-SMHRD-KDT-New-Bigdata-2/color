@@ -315,6 +315,10 @@ section {
  #palettes_name{
  	margin-right : 40px;
  }
+ 
+ .hex {
+ 	text-transform: uppercase;
+ }
 
 
 /*--------------------

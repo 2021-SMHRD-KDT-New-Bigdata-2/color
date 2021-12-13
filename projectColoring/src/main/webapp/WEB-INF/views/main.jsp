@@ -311,23 +311,23 @@
 					<li><div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color1};">
-								<span>${vo.palette_color1}</span>
+								<span class="hex">${vo.palette_color1}</span>
 							</div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color2};">
-								<span>${vo.palette_color2}</span>
+								<span class="hex">${vo.palette_color2}</span>
 							</div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color3};">
-								<span>${vo.palette_color3}</span>
+								<span class="hex">${vo.palette_color3}</span>
 							</div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color4};">
-								<span>${vo.palette_color4}</span>
+								<span class="hex">${vo.palette_color4}</span>
 							</div>
 							<div class="palette_color"
 								style="background-color: ${vo.palette_color5};">
-								<span>${vo.palette_color5}</span>
+								<span class="hex">${vo.palette_color5}</span>
 							</div>
 						</div></li>
 				</c:forEach>
@@ -503,19 +503,19 @@
 				var view = "<li>";
 				view += "<div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color1+";'>";
-				view += "<span>" + data[i].palette_color1 + "</span>";
+				view += "<span class='hex'>" + data[i].palette_color1 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color2+";'>";
-				view += "<span>" + data[i].palette_color2 + "</span>";
+				view += "<span class='hex'>" + data[i].palette_color2 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color3+";'>";
-				view += "<span>" + data[i].palette_color3 + "</span>";
+				view += "<span class='hex'>" + data[i].palette_color3 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color4+";'>";
-				view += "<span>" + data[i].palette_color4 + "</span>";
+				view += "<span class='hex'>" + data[i].palette_color4 + "</span>";
 				view += "</div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color5+";'>";
-				view += "<span>" + data[i].palette_color5 + "</span>";
+				view += "<span class='hex'>" + data[i].palette_color5 + "</span>";
 				view += "</div>";
 				view += "</div>";
 				view += "<a class='savePalette' style='cursor: pointer;'>저장하기</a>"
