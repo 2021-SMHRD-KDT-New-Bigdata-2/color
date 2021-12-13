@@ -349,33 +349,32 @@
 	<!-- Bootstrap core JavaScript-->
 	<script type="text/javascript">
 		function detectLang() {
-			$
-					.ajax({
-						url : "https://dapi.kakao.com/v3/translation/language/detect",
-						type : "POST",
-						contentType : "application/x-www-form-urlencoded",
-						headers : {
-							"Authorization" : "KakaoAK 9b454e2d908098fe6dce2388f31113db"
-						},
-						data : {
-							query : $("#inputText").val()
-						},
-						success : function(data) {
-							console.log("언어 감지 완료");
-							let txt_content = $("#inputText").val();
-							console.log(txt_content);
-							var lang_code = data.language_info[0].code;
-							translate(lang_code, txt_content);
-						},
-						error : function(jqXHR, textStatus, errorThrown) {
-							console.log("언어 감지 실패")
-							var errorMsg = "Ready Status: ";
-							errorMsg += jqXHR.readyState + "\n";
-							errorMsg += "Status Text:";
-							errorMsg += jqXHR.readystatusText + "\n";
-							alert(errorMsg);
-						}
-					});
+			$.ajax({
+				url : "https://dapi.kakao.com/v3/translation/language/detect",
+				type : "POST",
+				contentType : "application/x-www-form-urlencoded",
+				headers : {
+					"Authorization" : "KakaoAK 9b454e2d908098fe6dce2388f31113db"
+				},
+				data : {
+					query : $("#inputText").val()
+				},
+				success : function(data) {
+					console.log("언어 감지 완료");
+					let txt_content = $("#inputText").val();
+					console.log(txt_content);
+					var lang_code = data.language_info[0].code;
+					translate(lang_code, txt_content);
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					console.log("언어 감지 실패")
+					var errorMsg = "Ready Status: ";
+					errorMsg += jqXHR.readyState + "\n";
+					errorMsg += "Status Text:";
+					errorMsg += jqXHR.readystatusText + "\n";
+					alert(errorMsg);
+				}
+			});
 		}
 
 		function translate(lang_code, txt_content) {
@@ -383,34 +382,33 @@
 				sendInput(txt_content);
 				return False
 			}
-			$
-					.ajax({
-						url : "https://dapi.kakao.com/v2/translation/translate",
-						type : "POST",
-						contentType : "application/x-www-form-urlencoded",
-						headers : {
-							"Authorization" : "KakaoAK 9b454e2d908098fe6dce2388f31113db"
-						},
-						data : {
-							query : txt_content,
-							src_lang : lang_code,
-							target_lang : "en"
-						},
-						success : function(data) {
-							console.log("언어 번역 완료");
-							var txt_translated = data.translated_text[0][0];
-							console.log(txt_translated);
-							sendInput(txt_translated);
-						},
-						error : function(jqXHR, textStatus, errorThrown) {
-							console.log("언어 번역 실패")
-							var errorMsg = "Ready Status: ";
-							errorMsg += jqXHR.readyState + "\n";
-							errorMsg += "Status Text:";
-							errorMsg += jqXHR.readystatusText + "\n";
-							alert(errorMsg);
-						}
-					});
+			$.ajax({
+				url : "https://dapi.kakao.com/v2/translation/translate",
+				type : "POST",
+				contentType : "application/x-www-form-urlencoded",
+				headers : {
+					"Authorization" : "KakaoAK 9b454e2d908098fe6dce2388f31113db"
+				},
+				data : {
+					query : txt_content,
+					src_lang : lang_code,
+					target_lang : "en"
+				},
+				success : function(data) {
+					console.log("언어 번역 완료");
+					var txt_translated = data.translated_text[0][0];
+					console.log(txt_translated);
+					sendInput(txt_translated);
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					console.log("언어 번역 실패")
+					var errorMsg = "Ready Status: ";
+					errorMsg += jqXHR.readyState + "\n";
+					errorMsg += "Status Text:";
+					errorMsg += jqXHR.readystatusText + "\n";
+					alert(errorMsg);
+				}
+			});
 		}
 		function sendInput(txt_translated) {
 			$.ajax({
