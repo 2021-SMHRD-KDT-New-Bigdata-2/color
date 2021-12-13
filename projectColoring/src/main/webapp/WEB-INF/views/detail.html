@@ -14,168 +14,158 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Coloring - Describe Your Emotions</title>
-		<style>
-			#logo{
-				height: 36px;
-				width: 150px;
-				background-repeat: no-repeat;
-				background-size: cover;
-				background-position: center center;
+<style>
+#logo {
+	height: 36px;
+	width: 150px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
 
-			}
-			.effect-bubba{
-				width: 20%;
-				height: 20%;
-			}
-      
-      .save_icon{
-        text-align: right;
-      }
+.effect-bubba {
+	width: 20%;
+	height: 20%;
+}
 
-      .palettes_list{
-        /* background-color: rgb(254,209,54); */
-        width: 900px;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 10px;
-        overflow: hidden;
+.save_icon {
+	text-align: right;
+}
 
-      }
-    
-      .myinfo{
-        margin-top: 20px;
-        padding: 10px 0 12px;
-        background-color: #f6f6f6;
-        border-top: 1px dotted #e3e3e3;
-        border-bottom: 1px dotted #e3e3e3;
-        text-align: center;
-      }
+.palettes_list {
+	/* background-color: rgb(254,209,54); */
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+	overflow: hidden;
+}
 
-      table{
-        width: 100%;
-        border-collapse: collapse;
-        border-spacing: 0;
-        table-layout: fixed;
-        word-wrap: break-word;
-        word-break: keep-all;
-      }
+.myinfo {
+	margin-top: 20px;
+	padding: 10px 0 12px;
+	background-color: #f6f6f6;
+	border-top: 1px dotted #e3e3e3;
+	border-bottom: 1px dotted #e3e3e3;
+	text-align: center;
+}
 
-      tr{
-        display: table-row;
-        vertical-align: inherit;
-        border-color: inherit;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        border: 1px dotted #e3e3e3;
-        font-weight: 500;
-        
-      }
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	table-layout: fixed;
+	word-wrap: break-word;
+	word-break: keep-all;
+}
 
-      td{
-        padding-top: 20px;
-        padding-bottom: 20px;
-        border: 1px dotted #e3e3e3;
-        font-weight: 500;
-        
-      }
-      th{
-        text-align: center;
-      }
-      .myinfo_table{
-        height: 40%;
-        width: 40%;
-        margin-left:auto; 
-        margin-right:auto;
-        padding: 1%;
-      }
-		</style>
-	</head>
-	<body id="page-top">
-		<!-- Navigation -->
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header page-scroll">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand page-scroll" href="#page-top">
-						<img id="logo" src="images/coloringLogo_small.png" alt="Treviso theme logo"></a>
-				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="hidden">
-							<a href="#page-top"></a>
-						</li>
-						<li>
-							<a class="page-scroll" href="#about">HOME</a>
-						</li>
-						<li>
-							<a class="page-scroll" href="#contact">Mypage</a>
-						</li>
-						<li>
-							<a class="page-scroll" href="#contact">logout</a>
-						</li>
-					</ul>
-				</div>				
-				<!-- /.navbar-collapse -->
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border: 1px dotted #e3e3e3;
+	font-weight: 500;
+}
+
+td {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border: 1px dotted #e3e3e3;
+	font-weight: 500;
+}
+
+th {
+	text-align: center;
+	width: 20%
+}
+
+.myinfo_table {
+	height: 40%;
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 1%;
+}
+</style>
+</head>
+<body id="page-top">
+	<!-- Navigation -->
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand page-scroll" href="#page-top"> <img
+					id="logo" src="images/coloringLogo_small.png"
+					alt="Treviso theme logo"></a>
 			</div>
-			<!-- /.container-fluid -->
-		</nav>
-		
-    <div id="target" class="specific">
-      <ul id="list" class="main">
-        <li class="mc-block">
-          <div style="background-color: #ff2000;"></div>
-        </li>
-        <li class="mc-block">
-          <div style="background-color: #ff7c00;"></div>
-        </li>
-        <li class="mc-block">
-          <div style="background-color: #f52394;"></div>
-        </li>
-        <li class="mc-block">
-          <div style="background-color: blue;"></div>
-        </li>
-        <li class="mc-block">
-          <div style="background-color: purple;"></div>
-        </li>
-      </ul>
-    </div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="hidden"><a href="#page-top"></a></li>
+					<li><a class="page-scroll" href="#about">HOME</a></li>
+					<li><a class="page-scroll" href="#contact">Mypage</a></li>
+					<li><a class="page-scroll" href="#contact">logout</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
 
-    <div class="color-info">
-      <table>
-        <tbody>
-          <tr>
-            <th>Color</th>
-            <th>Information</th>
-          </tr>
-          <tr>
-            <td class="color-pre">
-              <span class="color-display" style="background: #FF0018">
-              </span>
-            </td>
-            <td>
-              <ul>
-                <li>Name: ViVid Red</li>
-                <li>Hex: </li>
-                <li>RGB: (255, 0, 24)</li>
-                <li>CMYK: 0, 1, 0.905, 0</li>
-              </ul>
-            </td>
-          </tr>
+	<div id="target" class="specific">
+		<ul id="list" class="main">
+			<li class="mc-block">
+				<div style="background-color: #ff2000;"></div>
+			</li>
+			<li class="mc-block">
+				<div style="background-color: #ff7c00;"></div>
+			</li>
+			<li class="mc-block">
+				<div style="background-color: #f52394;"></div>
+			</li>
+			<li class="mc-block">
+				<div style="background-color: blue;"></div>
+			</li>
+			<li class="mc-block">
+				<div style="background-color: purple;"></div>
+			</li>
+		</ul>
+	</div>
 
+	<div class="color-info">
+		<table>
+			<tbody>
+				<tr>
+					<th>Color</th>
+					<th>Information</th>
+				</tr>
+				<tr>
+					<td class="color-pre"><span class="color-display"
+						style="background: #FF0018"> </span></td>
+					<td>
+						<ul>
+							<li>Name: ViVid Red</li>
+							<li>Hex:</li>
+							<li>RGB: (255, 0, 24)</li>
+							<li>CMYK: 0, 1, 0.905, 0</li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-        </tbody>
-      </table>
-    </div>
-    
-		<!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
 			================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-	</body>
+	<!-- Placed at the end of the document so the pages load faster -->
+</body>
 </html>
