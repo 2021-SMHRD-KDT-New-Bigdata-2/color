@@ -119,10 +119,17 @@
 	z-index: 500;
 }
 
+#PaletteName{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 18px;
+}
+
 /* 아래쪽 툴팁 끝 */
 </style>
 <!-- Style 끝 -->
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,300&family=Ubuntu&display=swap" rel="stylesheet">
 </head>
 <body id="page-top">
 	<!-- 상단 로그인, 로그아웃 바 시작 -->
@@ -186,7 +193,6 @@
 		</div>
 	</nav>
 	<!-- 상단 로그인, 로그아웃 바 끝 -->
-
 	<section id="portfolio">
 		<div class="container">
 			<!-- 텍스트 입력부 시작 -->
@@ -331,7 +337,7 @@
 								style="background-color: ${vo.palette_color5};">
 								<span class="hex">${vo.palette_color5}</span>
 							</div>
-						</div> <a style="text-transform: capitalize;">${PList[vo.palette_seq].txt_content}</a></li>
+						</div> <a id="PaletteName" style="text-transform: capitalize;">${PList[vo.palette_seq].txt_content}</a></li>
 				</c:forEach>
 			</ul>
 		</div>
