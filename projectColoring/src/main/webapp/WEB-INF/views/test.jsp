@@ -262,6 +262,7 @@ function sendInput() {
         }
         $.ajax({
             url : 'http://172.30.1.8:8000/post',
+            async : false,
             type : 'post',
             data : {
                 'inputText' : inputText,
@@ -282,11 +283,16 @@ function sendInput() {
 		var inputText1 = data.inputText1;
 		
 		if(inputText1 == null){
-			
+			$('div').remove('#message1');
 		}else{
 			var searchDiv = document.getElementById('message1');
-			searchDiv.innerHTML += "<button id='inputTbtn'>"+inputText1+"</button>"
-			searchDiv.innerHTML += "<button id='inputXbtn'>"+"x"+"</button>"
+			var el = document.createElement("div")
+			el.innerHTML += "<button id='inputTbtn'>"+inputText1+"</button>"
+			el.innerHTML += "<button id='inputXbtn'>"+"x"+"</button>"
+			el.innerHTML += "</div>"
+			searchDiv.appendChild(el);
+			//searchDiv.innerHTML += "<div><button id='inputTbtn'>"+inputText1+"</button>"
+			//searchDiv.innerHTML += "<button id='inputXbtn'>"+"x"+"</button></div>"
 		}
 		
 		
@@ -299,12 +305,117 @@ function sendInput() {
 		copyT.select();
 		document.execCommand('copy');
 		document.body.removeChild(copyT);
-		$('div').remove('#message1');
+		$('div#message1').html('')
 	});
 	//inputXbtn 그냥 삭제
 	$(document).on("click","#inputXbtn",function(){
-		$('div').remove('#message1');
+		//$('div').remove('#message1');
+		this.parentElement.remove();
 	});
+	
+	
+	$('#loginBtn').click(function(e) {
+		e.preventDefault();
+		$('#loginModal').modal('show');
+	});
+
+	$(".colorDiv").click(function() {
+		$('#inputText').val(this.id);
+		$('#searchColorBtn').click();
+	});
+
+	$(document).ready(function() {
+		$(".colorDiv").tooltip();
+	});
+
+	// 클릭시 복사
+	$(document).on("click", ".palette_color", function() {
+		var tmp = document.createElement("textarea");
+		document.body.append(tmp);
+		tmp.value = $(this).children().html();
+		tmp.select();
+		document.execCommand('copy');
+		document.body.removeChild(tmp);
+		$(this).children().html("Copied!");
+	});
+	
+
+
+	// 마우스 호버 헥스코드 표시/초기화
+	var tmp_code
+	$(document).on("mouseenter", ".palette_color", function() {
+		tmp_code = $(this).children().html();
+		$(this).children().css("color", getColorByLuma(tmp_code))
+		$(this).children().css("display", "inline");
+	});
+	$(document).on("mouseleave", ".palette_color", function() {
+		$(this).children().css("display", "none");
+		$(this).children().html(tmp_code);
+	});
+
+	// 밝기 값에 따라서 텍스트 색상 변경
+	function getColorByLuma(hexColor) {
+		const c = hexColor.substring(1) // 색상 앞의 # 제거
+		const rgb = parseInt(c, 16) // rrggbb를 10진수로 변환
+		const r = (rgb >> 16) & 0xff // red 추출
+		const g = (rgb >> 8) & 0xff // green 추출
+		const b = (rgb >> 0) & 0xff // blue 추출
+		const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
+		// 색상 선택
+		return luma < 127.5 ? "white" : "black"
+	}
+
+	// 저장하기 기능
+	$(document).on(
+			"click",
+			".savePalette",
+			function() {
+				var palette_color1 = $(this).parent().find('div:eq(0)')
+						.find('div:eq(0)').children().html();
+				var palette_color2 = $(this).parent().find('div:eq(0)')
+						.find('div:eq(1)').children().html();
+				var palette_color3 = $(this).parent().find('div:eq(0)')
+						.find('div:eq(2)').children().html();
+				var palette_color4 = $(this).parent().find('div:eq(0)')
+						.find('div:eq(3)').children().html();
+				var palette_color5 = $(this).parent().find('div:eq(0)')
+						.find('div:eq(4)').children().html();
+				var palette_name = $("#inputText").val();
+				var user_seq = "${userVO.user_seq}";
+				$.ajax({
+					url : "insertMyPalettes.do",
+					type : "POST",
+
+					data : {
+						"palette_name" : palette_name,
+						"palette_color1" : palette_color1,
+						"palette_color2" : palette_color2,
+						"palette_color3" : palette_color3,
+						"palette_color4" : palette_color4,
+						"palette_color5" : palette_color5,
+						"user_seq" : user_seq
+					},
+					dataType : "text",
+					success : function(res) {
+						console.log(res)
+						alert("success");
+					},
+					error : function(err) {
+						console.log(err)
+						alert("fail");
+					}
+				});
+			})
+
+	//히오스
+	$.LoadingOverlay("show", {
+		background : "rgba(0, 0, 0, 0.5)",
+		image : "",
+		maxSize : 60,
+		fontawesome : "fa fa-spinner fa-pulse fa-fw",
+		fontawesomeColor : "#FFFFFF",
+	});
+	$.LoadingOverlay("hide");
 
 </script>
 </html>
