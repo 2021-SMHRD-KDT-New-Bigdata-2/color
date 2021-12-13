@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="${cpath}/resources/js/theme-scripts.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 <link rel="stylesheet"
@@ -18,8 +17,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
 <title>Coloring - Describe Your Emotions</title>
 
 <!-- Style 시작 -->

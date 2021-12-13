@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="${cpath}/resources/js/theme-scripts.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 <link rel="stylesheet"
@@ -17,13 +16,10 @@
 <link rel="stylesheet" href="${cpath}/resources/css/style3.css" />
 <script src="${cpath}/resources/js/bootstrap.min.js"></script>
 <script src="${cpath}/resources/js/SmoothScroll.js"></script>
-<script src="${cpath}/resources/js/theme-scripts.js"></script>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
 <title>Coloring - Describe Your Emotions</title>
 <style>
 #logo {
@@ -199,9 +195,7 @@ th {
 							</span></td>
 							<td>
 								<ul>
-									<li>
-										<span id="name1"></span>
-									</li>
+									<li><span id="name1"></span></li>
 								</ul>
 								<ul>
 									<li>HEX : <span class="hex" id="hex1">${vo.palette_color1}</span></li>
@@ -217,9 +211,7 @@ th {
 							</span></td>
 							<td>
 								<ul>
-									<li>
-										<span id="name2"></span>
-									</li>
+									<li><span id="name2"></span></li>
 								</ul>
 								<ul>
 									<li>HEX : <span class="hex" id="hex2">${vo.palette_color2}</span></li>
@@ -235,9 +227,7 @@ th {
 							</span></td>
 							<td>
 								<ul>
-									<li>
-										<span id="name3"></span>
-									</li>
+									<li><span id="name3"></span></li>
 								</ul>
 								<ul>
 									<li>HEX : <span class="hex" id="hex3">${vo.palette_color3}</span></li>
@@ -253,9 +243,7 @@ th {
 							</span></td>
 							<td>
 								<ul>
-									<li>
-										<span id="name4"></span>
-									</li>
+									<li><span id="name4"></span></li>
 								</ul>
 								<ul>
 									<li>HEX : <span class="hex" id="hex4">${vo.palette_color4}</span></li>
@@ -271,9 +259,7 @@ th {
 							</span></td>
 							<td>
 								<ul>
-									<li>
-										<span id="name5"></span>
-									</li>
+									<li><span id="name5"></span></li>
 								</ul>
 								<ul>
 									<li>HEX : <span class="hex" id="hex5">${vo.palette_color5}</span></li>
