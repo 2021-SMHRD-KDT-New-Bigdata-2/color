@@ -22,6 +22,7 @@ SELECT * FROM `autumn aura` GROUP BY palette_name HAVING COUNT(palette_name) > 1
 
 -- userPalettes 생성 --
 use color;
+truncate userPalettes
 select * from userPalettes where palette_name='huhu';
 CREATE TABLE userPalettes
 (

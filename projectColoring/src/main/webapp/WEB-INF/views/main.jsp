@@ -377,36 +377,37 @@
 		function detectLang() {
 			var inputText = $("#inputText").val();
 			if (inputText == "") {
-	            alert("텍스트를 입력해주세요.");
-	            $("#inputText").focus();
-	            return false;
-	        }
-			$.ajax({
-				url : "https://dapi.kakao.com/v3/translation/language/detect",
-				type : "POST",
-				contentType : "application/x-www-form-urlencoded",
-				headers : {
-					"Authorization" : "KakaoAK 9b454e2d908098fe6dce2388f31113db"
-				},
-				data : {
-					query : inputText
-				},
-				success : function(data) {
-					console.log("언어 감지 완료");
-					let txt_content = $("#inputText").val();
-					console.log(txt_content);
-					var lang_code = data.language_info[0].code;
-					translate(lang_code, txt_content);
-				},
-				error : function(jqXHR, textStatus, errorThrown) {
-					console.log("언어 감지 실패")
-					var errorMsg = "Ready Status: ";
-					errorMsg += jqXHR.readyState + "\n";
-					errorMsg += "Status Text:";
-					errorMsg += jqXHR.readystatusText + "\n";
-					alert(errorMsg);
-				}
-			});
+				alert("텍스트를 입력해주세요.");
+				$("#inputText").focus();
+				return false;
+			}
+			$
+					.ajax({
+						url : "https://dapi.kakao.com/v3/translation/language/detect",
+						type : "POST",
+						contentType : "application/x-www-form-urlencoded",
+						headers : {
+							"Authorization" : "KakaoAK 9b454e2d908098fe6dce2388f31113db"
+						},
+						data : {
+							query : inputText
+						},
+						success : function(data) {
+							console.log("언어 감지 완료");
+							let txt_content = $("#inputText").val();
+							console.log(txt_content);
+							var lang_code = data.language_info[0].code;
+							translate(lang_code, txt_content);
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							console.log("언어 감지 실패")
+							var errorMsg = "Ready Status: ";
+							errorMsg += jqXHR.readyState + "\n";
+							errorMsg += "Status Text:";
+							errorMsg += jqXHR.readystatusText + "\n";
+							alert(errorMsg);
+						}
+					});
 		}
 
 		function translate(lang_code, txt_content) {
@@ -415,54 +416,55 @@
 				return false;
 			}
 			var inputText = $("#inputText").val();
-			$.ajax({
-				url : "https://dapi.kakao.com/v2/translation/translate",
-				type : "POST",
-				contentType : "application/x-www-form-urlencoded",
-				headers : {
-					"Authorization" : "KakaoAK 9b454e2d908098fe6dce2388f31113db"
-				},
-				data : {
-					query : txt_content,
-					src_lang : lang_code,
-					target_lang : "en"
-				},
-				success : function(data) {
-					console.log("언어 번역 완료");
-					var txt_translated = data.translated_text[0][0];
-					console.log(txt_translated);
-					sendInput(txt_translated);
-				},
-				error : function(jqXHR, textStatus, errorThrown) {
-					console.log("언어 번역 실패")
-					var errorMsg = "Ready Status: ";
-					errorMsg += jqXHR.readyState + "\n";
-					errorMsg += "Status Text:";
-					errorMsg += jqXHR.readystatusText + "\n";
-					alert(errorMsg);
-				},
-				complete : function() {
-					if (lang_code == "kr") {
-						$.ajax({
-				            url : 'http://172.30.1.8:8000/post',
-				            // async : false,
-				            type : 'post',
-				            data : {
-				                'inputText' : inputText,
-				            },
-				            dataType : 'json',
-				            success : function(res){
-				            	console.log("데이터" , res)
-				            	input(res);
-				            },
-				         	error : function(){
-				                alert('요청실패');
-				            }
+			$
+					.ajax({
+						url : "https://dapi.kakao.com/v2/translation/translate",
+						type : "POST",
+						contentType : "application/x-www-form-urlencoded",
+						headers : {
+							"Authorization" : "KakaoAK 9b454e2d908098fe6dce2388f31113db"
+						},
+						data : {
+							query : txt_content,
+							src_lang : lang_code,
+							target_lang : "en"
+						},
+						success : function(data) {
+							console.log("언어 번역 완료");
+							var txt_translated = data.translated_text[0][0];
+							console.log(txt_translated);
+							sendInput(txt_translated);
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							console.log("언어 번역 실패")
+							var errorMsg = "Ready Status: ";
+							errorMsg += jqXHR.readyState + "\n";
+							errorMsg += "Status Text:";
+							errorMsg += jqXHR.readystatusText + "\n";
+							alert(errorMsg);
+						},
+						complete : function() {
+							if (lang_code == "kr") {
+								$.ajax({
+									url : 'http://172.30.1.8:8000/post',
+									// async : false,
+									type : 'post',
+									data : {
+										'inputText' : inputText,
+									},
+									dataType : 'json',
+									success : function(res) {
+										console.log("데이터", res)
+										input(res);
+									},
+									error : function() {
+										alert('요청실패');
+									}
 
-				            });
-					}
-				}
-			});
+								});
+							}
+						}
+					});
 		}
 		function sendInput(txt_translated) {
 			$.ajax({
@@ -478,14 +480,14 @@
 				}
 			});
 		}
-		
-		function input(data){
+
+		function input(data) {
 			var inputText = data.inputText;
 			var inputText1 = data.inputText1;
-			
-			if(inputText1 == null){
+
+			if (inputText1 == null) {
 				$('div').remove('#message1');
-			}else{
+			} else {
 				var searchDiv = document.getElementById('message1');
 				//var el = document.createElement("div")
 				//el.innerHTML += "<button id='inputTbtn'>"+inputText1+"</button>"
@@ -493,40 +495,38 @@
 				//el.innerHTML += "</div>"
 				//searchDiv.appendChild(el);
 				var view = "<div class='result'>"
-				view += "<span id='inputTbtn'>"+inputText1+"</span>"
+				view += "<span id='inputTbtn'>" + inputText1 + "</span>"
 				view += "<span id='inputXbtn'>X</span>"
 				view += "</div>"
 				$("#message1").append(view).children(':last').hide().fadeIn();
 				var target = document.getElementById("inputText")
 				target.style.textDecoration = 'underline red';
 				target.style.textDecorationStyle = "dotted";
-				
-						
-				}
-					
-					
+
 			}
-				//inputTbtn 눌렀을 때 검색창에 결과 적용, 이후 내용 삽입
-				$(document).on("click","#inputTbtn",function(){
-					var target1 = document.getElementById("inputText")
-					target1.style.textDecoration = 'none';
-					var copyT = document.createElement("textarea");
-					document.body.append(copyT);
-					copyT.value = $(this).html();
-					// id로 검색창 가져와서 값 덮어씌우기
-					$("#inputText").val(copyT.value);
-					document.body.removeChild(copyT);
-					$('div#message1').html('')
-					
-				});
-				//inputXbtn 그냥 삭제
-				$(document).on("click","#inputXbtn",function(){
-					var target2 = document.getElementById("inputText")
-					target2.style.textDecoration = 'none';
-					//$('div').remove('#message1');
-					this.parentElement.remove();
-				});
-				
+
+		}
+		//inputTbtn 눌렀을 때 검색창에 결과 적용, 이후 내용 삽입
+		$(document).on("click", "#inputTbtn", function() {
+			var target1 = document.getElementById("inputText")
+			target1.style.textDecoration = 'none';
+			var copyT = document.createElement("textarea");
+			document.body.append(copyT);
+			copyT.value = $(this).html();
+			// id로 검색창 가져와서 값 덮어씌우기
+			$("#inputText").val(copyT.value);
+			document.body.removeChild(copyT);
+			$('div#message1').html('')
+
+		});
+		//inputXbtn 그냥 삭제
+		$(document).on("click", "#inputXbtn", function() {
+			var target2 = document.getElementById("inputText")
+			target2.style.textDecoration = 'none';
+			//$('div').remove('#message1');
+			this.parentElement.remove();
+		});
+
 		function showPalResult(data) {
 			for (var i = 0; i < 4; i++) {
 				var view = "<li>";
@@ -552,7 +552,7 @@
 						+ "</span>";
 				view += "</div>";
 				view += "</div>";
-				view += "<img src='${cpath}/resources/images/emptyHeart.png' class='savePaletteRandom saveBtn tooltip-bottom' id='emptyHeart'>";
+				view += "<img src='${cpath}/resources/images/emptyHeart.png' class='savePalette saveBtn tooltip-bottom' id='emptyHeart'>";
 				view += "</li>";
 				$(".light-bg").LoadingOverlay("hide", true);
 				$("#palettes_result").append(view).children(':last').hide()
@@ -605,107 +605,116 @@
 			const b = (rgb >> 0) & 0xff // blue 추출
 			const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
 			// 색상 선택
-			return luma < 127.5 ? "white" : "black"
+			return luma < 127.5 ? "white" : "black";
 		}
 
 		// 저장하기 기능(검색결과)
-		$(document).on(
-				"click",
-				".savePalette",
-				function() {
-					var palette_color1 = $(this).parent().find('div:eq(0)')
-							.find('div:eq(0)').children().html();
-					var palette_color2 = $(this).parent().find('div:eq(0)')
-							.find('div:eq(1)').children().html();
-					var palette_color3 = $(this).parent().find('div:eq(0)')
-							.find('div:eq(2)').children().html();
-					var palette_color4 = $(this).parent().find('div:eq(0)')
-							.find('div:eq(3)').children().html();
-					var palette_color5 = $(this).parent().find('div:eq(0)')
-							.find('div:eq(4)').children().html();
-					var palette_name = $("#inputText").val();
-					var user_seq = "${userVO.user_seq}";
-					var el = $(this);
-					$.ajax({
-						url : "insertMyPalettes.do",
-						type : "POST",
-						data : {
-							"palette_name" : palette_name,
-							"palette_color1" : palette_color1,
-							"palette_color2" : palette_color2,
-							"palette_color3" : palette_color3,
-							"palette_color4" : palette_color4,
-							"palette_color5" : palette_color5,
-							"user_seq" : user_seq
-						},
-						dataType : "text",
-						success : function() {
-							if (check =='${cpath}/resources/images/fullHeart.png'){
-								el.attr('src','${cpath}/resources/images/emptyHeart.png');
-							}if (check =='${cpath}/resources/images/emptyHeart.png'){
-								el.attr('src','${cpath}/resources/images/fullHeart.png');
-							}
-						},
-						error : function() {
-							alert("로그인이 필요한 서비스입니다.");
-							document.querySelector("#loginBtn").click();
-						}
-					});
-				})
+		$(document).on("click",".savePalette",
+						function() {
+							var palette_color1 = $(this).parent().find(
+									'div:eq(0)').find('div:eq(0)').children()
+									.html();
+							var palette_color2 = $(this).parent().find(
+									'div:eq(0)').find('div:eq(1)').children()
+									.html();
+							var palette_color3 = $(this).parent().find(
+									'div:eq(0)').find('div:eq(2)').children()
+									.html();
+							var palette_color4 = $(this).parent().find(
+									'div:eq(0)').find('div:eq(3)').children()
+									.html();
+							var palette_color5 = $(this).parent().find(
+									'div:eq(0)').find('div:eq(4)').children()
+									.html();
+							var palette_name = $("#inputText").val();
+							var user_seq = "${userVO.user_seq}";
+							var el = $(this);
+							var check = $(this).attr('src');
+							$.ajax({
+										url : "insertMyPalettes.do",
+										type : "POST",
+										data : {
+											"palette_name" : palette_name,
+											"palette_color1" : palette_color1,
+											"palette_color2" : palette_color2,
+											"palette_color3" : palette_color3,
+											"palette_color4" : palette_color4,
+											"palette_color5" : palette_color5,
+											"user_seq" : user_seq
+										},
+										dataType : "text",
+										success : function() {
+											if (check == '${cpath}/resources/images/fullHeart.png') {
+												el.attr('src','${cpath}/resources/images/emptyHeart.png');
+											}
+											if (check == '${cpath}/resources/images/emptyHeart.png') {
+												el.attr('src','${cpath}/resources/images/fullHeart.png');
+											}
+										},
+										error : function() {
+											alert("로그인이 필요한 서비스입니다.");
+											document.querySelector("#loginBtn").click();
+										}
+									});
+						})
 
 		// 저장하기 기능(랜덤생성)
-		$(document).on(
-				"click",
-				".savePaletteRandom",
-				function() {
-					var palette_color1 = $(this).parent().find('div:eq(0)')
-							.find('div:eq(0)').children().html();
-					var palette_color2 = $(this).parent().find('div:eq(0)')
-							.find('div:eq(1)').children().html();
-					var palette_color3 = $(this).parent().find('div:eq(0)')
-							.find('div:eq(2)').children().html();
-					var palette_color4 = $(this).parent().find('div:eq(0)')
-							.find('div:eq(3)').children().html();
-					var palette_color5 = $(this).parent().find('div:eq(0)')
-							.find('div:eq(4)').children().html();
-					var palette_name = $(this).parent().find('.palettes_name').html();
-					var user_seq = "${userVO.user_seq}";
-					var el = $(this);
-					var check = $(this).attr('src');
-					$.ajax({
-						url : "insertMyPalettes.do",
-						type : "POST",
-						data : {
-							"palette_name" : palette_name,
-							"palette_color1" : palette_color1,
-							"palette_color2" : palette_color2,
-							"palette_color3" : palette_color3,
-							"palette_color4" : palette_color4,
-							"palette_color5" : palette_color5,
-							"user_seq" : user_seq
-						},
-						dataType : "text",
-						success : function() {
-							if (check =='${cpath}/resources/images/fullHeart.png'){
-								el.attr('src','${cpath}/resources/images/emptyHeart.png');
-							}else if (check =='${cpath}/resources/images/emptyHeart.png'){
-								el.attr('src','${cpath}/resources/images/fullHeart.png');
-							}
-						},
-						error : function() {
-							alert("로그인이 필요한 서비스입니다.");
-							document.querySelector("#loginBtn").click();
-						}
-					});
-				})
+		$(document).on("click",".savePaletteRandom",
+						function() {
+							var palette_color1 = $(this).parent().find(
+									'div:eq(0)').find('div:eq(0)').children()
+									.html();
+							var palette_color2 = $(this).parent().find(
+									'div:eq(0)').find('div:eq(1)').children()
+									.html();
+							var palette_color3 = $(this).parent().find(
+									'div:eq(0)').find('div:eq(2)').children()
+									.html();
+							var palette_color4 = $(this).parent().find(
+									'div:eq(0)').find('div:eq(3)').children()
+									.html();
+							var palette_color5 = $(this).parent().find(
+									'div:eq(0)').find('div:eq(4)').children()
+									.html();
+							var palette_name = $(this).parent().find(
+									'.palettes_name').html();
+							var user_seq = "${userVO.user_seq}";
+							var el = $(this);
+							var check = $(this).attr('src');
+							$.ajax({
+										url : "insertMyPalettes.do",
+										type : "POST",
+										data : {
+											"palette_name" : palette_name,
+											"palette_color1" : palette_color1,
+											"palette_color2" : palette_color2,
+											"palette_color3" : palette_color3,
+											"palette_color4" : palette_color4,
+											"palette_color5" : palette_color5,
+											"user_seq" : user_seq
+										},
+										dataType : "text",
+										success : function() {
+											if (check == '${cpath}/resources/images/fullHeart.png') {
+												el.attr('src','${cpath}/resources/images/emptyHeart.png');
+											} else if (check == '${cpath}/resources/images/emptyHeart.png') {
+												el.attr('src','${cpath}/resources/images/fullHeart.png');
+											}
+										},
+										error : function() {
+											alert("로그인이 필요한 서비스입니다.");
+											document.querySelector("#loginBtn").click();
+										}
+									});
+						})
 
 		// 히오스
 		// 검색버튼 클릭시 생성
 		$("#searchColorBtn").on("click", function() {
 			var inputText = $("#inputText").val();
 			if (inputText == "") {
-	            return false;
-	        }
+				return false;
+			}
 			$(".light-bg").LoadingOverlay("show");
 		})
 	</script>
