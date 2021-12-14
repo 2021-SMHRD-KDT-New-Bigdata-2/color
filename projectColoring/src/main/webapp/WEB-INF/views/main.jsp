@@ -122,6 +122,8 @@
 #PaletteName {
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 18px;
+	color: black;
+	text-transform: capitalize;
 }
 
 .result {
@@ -138,7 +140,9 @@
 .result>span {
 	padding-left: 8px;
 }
-
+.palette_color{
+	cursor: pointer;
+}
 .saveBtn {
 	width: 15px;
 	height: 15px;
@@ -529,7 +533,7 @@
 
 		function showPalResult(data) {
 			for (var i = 0; i < 4; i++) {
-				var view = "<li>";
+				view += "<li>";
 				view += "<div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color1+";'>";
 				view += "<span class='hex'>" + data[i].palette_color1

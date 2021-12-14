@@ -48,7 +48,6 @@ public class AjaxController {
 	public String insertMyPalettes(userPalettes vo) {
 		String name = vo.getPalette_name();
 		List<userPalettes> check = mapper.checkPaletteName(name);
-		System.out.print(check);
 		if (check.size() == 0) {
 			mapper.insertMyPalettes(vo);
 		} else if (check.size() != 0) {

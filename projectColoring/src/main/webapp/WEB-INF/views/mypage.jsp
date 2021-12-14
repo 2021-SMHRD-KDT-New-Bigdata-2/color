@@ -195,6 +195,23 @@ th {
 	font-size: 18px;
 	color: black;
 	cursor: pointer;
+	text-transform: capitalize;
+}
+.palette_color{
+	cursor: pointer;
+}
+.saveBtn {
+	width: 15px;
+	height: 15px;
+	margin: 3%;
+	cursor: pointer;
+}
+.deleteIcon{
+	width: 16px;
+	height: 16px;
+	margin-left: 3%;
+	margin-bottom: 2%;
+	cursor: pointer;
 }
 </style>
 <!-- Style 끝 -->
@@ -344,7 +361,7 @@ th {
 				view += "</div>";
 				view += "</div>";
 				view += "<a href='/web/paletteDetail.do?seq="+ data[i].palette_seq +"' class='palettes_name' id='PaletteName'>" + data[i].palette_name + "</a>";
-				view += "<a onclick='deleteMyPalette(" + data[i].palette_seq + ")' style='cursor: pointer;'>삭제하기</a>";
+				view += "<img onclick='deleteMyPalette(" + data[i].palette_seq + ")' src='${cpath}/resources/images/deleteIcon.png' class='deleteIcon'>";
 				view += "</li>";
 				$("#palettes_result").append(view);
 			}
