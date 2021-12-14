@@ -640,10 +640,11 @@
 						},
 						dataType : "text",
 						success : function() {
-							if (check =='${cpath}/resources/images/fullHeart.png')
+							if (check =='${cpath}/resources/images/fullHeart.png'){
 								el.attr('src','${cpath}/resources/images/emptyHeart.png');
-							if (check =='${cpath}/resources/images/emptyHeart.png')
+							}if (check =='${cpath}/resources/images/emptyHeart.png'){
 								el.attr('src','${cpath}/resources/images/fullHeart.png');
+							}
 						},
 						error : function() {
 							alert("로그인이 필요한 서비스입니다.");

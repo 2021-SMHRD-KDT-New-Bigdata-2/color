@@ -42,19 +42,19 @@ public class AjaxController {
 	public void deleteMyPalette(int seq) {
 		mapper.deleteMyPalette(seq);
 	}
-	
+
 	// 내정보에 팔레트 저장하기
 	@PostMapping("/insertMyPalettes.do")
 	public String insertMyPalettes(userPalettes vo) {
-		String name=vo.getPalette_name();
-		List<userPalettes> check=mapper.checkPaletteName(name);
+		String name = vo.getPalette_name();
+		List<userPalettes> check = mapper.checkPaletteName(name);
 		System.out.print(check);
-		if(check.size()==0) {
+		if (check.size() == 0) {
 			mapper.insertMyPalettes(vo);
-		}else if(check.size()!=0) {
+		} else if (check.size() != 0) {
 			mapper.deleteMyPaletteToName(name);
 		}
 		return "ok";
 	}
-	
+
 }
