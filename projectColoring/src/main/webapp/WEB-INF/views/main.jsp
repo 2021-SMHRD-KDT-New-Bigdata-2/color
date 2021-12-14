@@ -139,6 +139,13 @@
 	padding-left: 8px;
 }
 
+.saveBtn {
+	width: 15px;
+	height: 15px;
+	margin: 3%;
+	cursor: pointer;
+}
+
 /* 아래쪽 툴팁 끝 */
 </style>
 <!-- Style 끝 -->
@@ -356,8 +363,10 @@
 								style="background-color: ${vo.palette_color5};">
 								<span class="hex">${vo.palette_color5}</span>
 							</div>
-						</div> <a id="PaletteName" class="savePaletteRandom"
-						style="text-transform: capitalize; cursor: pointer;">${PList[vo.palette_seq].txt_content}</a></li>
+						</div> <a href='${cpath}/paletteDetail.do?seq=${vo.palette_seq}'
+						class='palettes_name' id='PaletteName'>${PList[vo.palette_seq].txt_content}</a>
+						<img src='${cpath}/resources/images/emptyHeart.png'
+						class='savePaletteRandom saveBtn tooltip-bottom' id='emptyHeart'>
 				</c:forEach>
 			</ul>
 		</div>
@@ -616,10 +625,10 @@
 							.find('div:eq(4)').children().html();
 					var palette_name = $("#inputText").val();
 					var user_seq = "${userVO.user_seq}";
+					var el = $(this)
 					$.ajax({
 						url : "insertMyPalettes.do",
 						type : "POST",
-
 						data : {
 							"palette_name" : palette_name,
 							"palette_color1" : palette_color1,
@@ -631,8 +640,7 @@
 						},
 						dataType : "text",
 						success : function() {
-							console.log(res)
-							alert("success");
+							el.attr('src','${cpath}/resources/images/fullHeart.png');
 						},
 						error : function() {
 							alert("로그인이 필요한 서비스입니다.");
@@ -656,8 +664,10 @@
 							.find('div:eq(3)').children().html();
 					var palette_color5 = $(this).parent().find('div:eq(0)')
 							.find('div:eq(4)').children().html();
-					var palette_name = $(this).html();
+					var palette_name = $(this).parent().find('.palettes_name').html();
 					var user_seq = "${userVO.user_seq}";
+					var el = $(this);
+					var check = $(this).attr('src');
 					$.ajax({
 						url : "insertMyPalettes.do",
 						type : "POST",
@@ -672,7 +682,10 @@
 						},
 						dataType : "text",
 						success : function() {
-							alert("내 정보에 저장되었습니다.");
+							if (check =='${cpath}/resources/images/fullHeart.png')
+								el.attr('src','${cpath}/resources/images/emptyHeart.png');
+							if (check =='${cpath}/resources/images/emptyHeart.png')
+								el.attr('src','${cpath}/resources/images/fullHeart.png');
 						},
 						error : function() {
 							alert("로그인이 필요한 서비스입니다.");

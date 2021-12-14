@@ -11,6 +11,10 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="${cpath}/resources/js/loadingoverlay.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="${cpath}/resources/css/icons.css" />
 <link rel="stylesheet" href="${cpath}/resources/css/style.css" />
 <link rel="stylesheet" href="${cpath}/resources/css/style1.css" />
 <head>
@@ -185,9 +189,20 @@ th {
 	padding: 1%;
 }
 /* 아래쪽 툴팁 끝 */
+
+#PaletteName {
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 18px;
+	color: black;
+	cursor: pointer;
+}
 </style>
 <!-- Style 끝 -->
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,300&family=Ubuntu&display=swap"
+	rel="stylesheet">
 </head>
 <body>
 	<!-- 상단 로그인, 로그아웃 바 시작 -->
@@ -310,7 +325,7 @@ th {
 
 		function showPalettes(data) {
 			for (let i = 0; i < data.length; i++) {
-				var view = "<li>";
+				var view = "<li>"
 				view += "<div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color1+";'>";
 				view += "<span class='hex'>" + data[i].palette_color1 + "</span>";
@@ -328,7 +343,7 @@ th {
 				view += "<span class='hex'>" + data[i].palette_color5 + "</span>";
 				view += "</div>";
 				view += "</div>";
-				view += "<a href='/web/paletteDetail.do?seq="+ data[i].palette_seq +"' class='palettes_name' style='cursor: pointer; margin-right : 30px;'>" + data[i].palette_name + "</a>";
+				view += "<a href='/web/paletteDetail.do?seq="+ data[i].palette_seq +"' class='palettes_name' id='PaletteName'>" + data[i].palette_name + "</a>";
 				view += "<a onclick='deleteMyPalette(" + data[i].palette_seq + ")' style='cursor: pointer;'>삭제하기</a>";
 				view += "</li>";
 				$("#palettes_result").append(view);
@@ -384,6 +399,13 @@ th {
 				}
 			})
 		}
+		
+		// 히오스
+		// 화면 로딩완료시 나오는 히오스
+		$.LoadingOverlay("show");
+		$(document).ready(()=>{
+			$.LoadingOverlay("hide", true);
+    	});
 		
 	</script>
 	<!-- 팔레트 불러오기 끝 -->

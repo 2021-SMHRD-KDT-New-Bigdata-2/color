@@ -46,6 +46,7 @@ public class AjaxController {
 	// 내정보에 팔레트 저장하기
 	@PostMapping("/insertMyPalettes.do")
 	public String insertMyPalettes(userPalettes vo) {
+		
 		mapper.insertMyPalettes(vo);
 		return "ok";
 	}

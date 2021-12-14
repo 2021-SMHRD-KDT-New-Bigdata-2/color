@@ -31,4 +31,6 @@
 	<select id="getPaletteName" resultType="kr.color.domain.InputText">
 	    select txt_content from inputText ;
 	</select>
+	
+	<select id="checkPaletteName"></select>
 </mapper>
