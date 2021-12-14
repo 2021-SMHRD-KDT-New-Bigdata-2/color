@@ -296,7 +296,7 @@ th {
 		var c3 = document.getElementById( "hex3" ).innerHTML;
 		var c4 = document.getElementById( "hex4" ).innerHTML;
 		var c5 = document.getElementById( "hex5" ).innerHTML;
-
+		
         document.getElementById( "rgb1" ).innerHTML = changeRGB( c1 );
         document.getElementById( "rgb2" ).innerHTML = changeRGB( c2 );
         document.getElementById( "rgb3" ).innerHTML = changeRGB( c3 );
