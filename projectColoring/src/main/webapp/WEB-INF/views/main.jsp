@@ -533,7 +533,7 @@
 
 		function showPalResult(data) {
 			for (var i = 0; i < 4; i++) {
-				view += "<li>";
+				var view = "<li>";
 				view += "<div>";
 				view += "<div class='palette_color' style='background-color: "+data[i].palette_color1+";'>";
 				view += "<span class='hex'>" + data[i].palette_color1
