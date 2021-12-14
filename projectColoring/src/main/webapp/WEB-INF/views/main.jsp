@@ -124,6 +124,21 @@
 	font-size: 18px;
 }
 
+.result {
+	display: inline-block;
+    vertical-align: top;
+    background: #f7f7f7;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px 15px 10px 10px;
+    border: 1px solid #d6d6d6;
+    position: relative;
+}
+
+.result > span {
+	padding-left: 8px;
+}
+
 /* 아래쪽 툴팁 끝 */
 </style>
 <!-- Style 끝 -->
@@ -308,6 +323,8 @@
 							</div>
 						</div>
 					</form>
+					<div class="input-group" style="margin: 0% 20% 0% 20%;" id='message1'>
+					</div>
 					<div class="palettes_list">
 						<ul id="palettes_result" class="palettes">
 						</ul>
@@ -349,6 +366,12 @@
 	<!-- Bootstrap core JavaScript-->
 	<script type="text/javascript">
 		function detectLang() {
+			var inputText = $("#inputText").val();
+			if (inputText == "") {
+	            alert("텍스트를 입력해주세요.");
+	            $("#inputText").focus();
+	            return false;
+	        }
 			$.ajax({
 				url : "https://dapi.kakao.com/v3/translation/language/detect",
 				type : "POST",
@@ -357,7 +380,7 @@
 					"Authorization" : "KakaoAK 9b454e2d908098fe6dce2388f31113db"
 				},
 				data : {
-					query : $("#inputText").val()
+					query : inputText
 				},
 				success : function(data) {
 					console.log("언어 감지 완료");
@@ -382,6 +405,7 @@
 				sendInput(txt_content);
 				return false;
 			}
+			var inputText = $("#inputText").val();
 			$.ajax({
 				url : "https://dapi.kakao.com/v2/translation/translate",
 				type : "POST",
@@ -407,6 +431,27 @@
 					errorMsg += "Status Text:";
 					errorMsg += jqXHR.readystatusText + "\n";
 					alert(errorMsg);
+				},
+				complete : function() {
+					if (lang_code == "kr") {
+						$.ajax({
+				            url : 'http://172.30.1.8:8000/post',
+				            // async : false,
+				            type : 'post',
+				            data : {
+				                'inputText' : inputText,
+				            },
+				            dataType : 'json',
+				            success : function(res){
+				            	console.log("데이터" , res)
+				            	input(res);
+				            },
+				         	error : function(){
+				                alert('요청실패');
+				            }
+
+				            });
+					}
 				}
 			});
 		}
@@ -424,7 +469,55 @@
 				}
 			});
 		}
-
+		
+		function input(data){
+			var inputText = data.inputText;
+			var inputText1 = data.inputText1;
+			
+			if(inputText1 == null){
+				$('div').remove('#message1');
+			}else{
+				var searchDiv = document.getElementById('message1');
+				//var el = document.createElement("div")
+				//el.innerHTML += "<button id='inputTbtn'>"+inputText1+"</button>"
+				//el.innerHTML += "<button id='inputXbtn'>"+"x"+"</button>"
+				//el.innerHTML += "</div>"
+				//searchDiv.appendChild(el);
+				var view = "<div class='result'>"
+				view += "<span id='inputTbtn'>"+inputText1+"</span>"
+				view += "<span id='inputXbtn'>X</span>"
+				view += "</div>"
+				$("#message1").append(view).children(':last').hide().fadeIn();
+				var target = document.getElementById("inputText")
+				target.style.textDecoration = 'underline red';
+				target.style.textDecorationStyle = "dotted";
+				
+						
+				}
+					
+					
+			}
+				//inputTbtn 눌렀을 때 검색창에 결과 적용, 이후 내용 삽입
+				$(document).on("click","#inputTbtn",function(){
+					var target1 = document.getElementById("inputText")
+					target1.style.textDecoration = 'none';
+					var copyT = document.createElement("textarea");
+					document.body.append(copyT);
+					copyT.value = $(this).html();
+					// id로 검색창 가져와서 값 덮어씌우기
+					$("#inputText").val(copyT.value);
+					document.body.removeChild(copyT);
+					$('div#message1').html('')
+					
+				});
+				//inputXbtn 그냥 삭제
+				$(document).on("click","#inputXbtn",function(){
+					var target2 = document.getElementById("inputText")
+					target2.style.textDecoration = 'none';
+					//$('div').remove('#message1');
+					this.parentElement.remove();
+				});
+				
 		function showPalResult(data) {
 			for (var i = 0; i < 4; i++) {
 				var view = "<li>";
@@ -591,6 +684,10 @@
 		// 히오스
 		// 검색버튼 클릭시 생성
 		$("#searchColorBtn").on("click", function() {
+			var inputText = $("#inputText").val();
+			if (inputText == "") {
+	            return false;
+	        }
 			$(".light-bg").LoadingOverlay("show");
 		})
 	</script>
