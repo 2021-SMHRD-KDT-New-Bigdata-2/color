@@ -32,5 +32,11 @@
 	    select txt_content from inputText ;
 	</select>
 	
-	<select id="checkPaletteName"></select>
+	<select id="checkPaletteName" resultType="kr.color.domain.userPalettes" parameterType="String">
+	    select * from userPalettes where palette_name=#{name};
+	</select>
+	
+	<delete id="deleteMyPaletteToName" parameterType="String">
+	    delete from userPalettes where palette_name=#{name};
+	</delete>
 </mapper>

@@ -17,4 +17,6 @@ public interface mainMapper {
 	public void insertMyPalettes(userPalettes vo);
 	public userPalettes paletteDetail(int seq);
 	public List<InputText> getPaletteName();
+	public List<userPalettes> checkPaletteName(String name);
+	public void deleteMyPaletteToName(String name);
 }

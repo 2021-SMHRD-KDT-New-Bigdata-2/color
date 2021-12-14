@@ -22,7 +22,7 @@ SELECT * FROM `autumn aura` GROUP BY palette_name HAVING COUNT(palette_name) > 1
 
 -- userPalettes 생성 --
 use color;
-select 'carfoka' from userPalettes;
+select * from userPalettes where palette_name='huhu';
 CREATE TABLE userPalettes
 (
     `palette_seq`      INT UNSIGNED    NOT NULL    AUTO_INCREMENT,

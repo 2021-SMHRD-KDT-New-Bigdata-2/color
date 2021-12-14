@@ -126,16 +126,16 @@
 
 .result {
 	display: inline-block;
-    vertical-align: top;
-    background: #f7f7f7;
-    border-radius: 10px;
-    margin: 5px;
-    padding: 10px 15px 10px 10px;
-    border: 1px solid #d6d6d6;
-    position: relative;
+	vertical-align: top;
+	background: #f7f7f7;
+	border-radius: 10px;
+	margin: 5px;
+	padding: 10px 15px 10px 10px;
+	border: 1px solid #d6d6d6;
+	position: relative;
 }
 
-.result > span {
+.result>span {
 	padding-left: 8px;
 }
 
@@ -330,8 +330,8 @@
 							</div>
 						</div>
 					</form>
-					<div class="input-group" style="margin: 0% 20% 0% 20%;" id='message1'>
-					</div>
+					<div class="input-group" style="margin: 0% 20% 0% 20%;"
+						id='message1'></div>
 					<div class="palettes_list">
 						<ul id="palettes_result" class="palettes">
 						</ul>
@@ -366,7 +366,7 @@
 						</div> <a href='${cpath}/paletteDetail.do?seq=${vo.palette_seq}'
 						class='palettes_name' id='PaletteName'>${PList[vo.palette_seq].txt_content}</a>
 						<img src='${cpath}/resources/images/emptyHeart.png'
-						class='savePaletteRandom saveBtn tooltip-bottom' id='emptyHeart'>
+						class='savePaletteRandom saveBtn tooltip-bottom' id='emptyHeart'></li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -552,7 +552,7 @@
 						+ "</span>";
 				view += "</div>";
 				view += "</div>";
-				view += "<a class='savePalette' style='cursor: pointer;'>저장하기</a>"
+				view += "<img src='${cpath}/resources/images/emptyHeart.png' class='savePaletteRandom saveBtn tooltip-bottom' id='emptyHeart'>";
 				view += "</li>";
 				$(".light-bg").LoadingOverlay("hide", true);
 				$("#palettes_result").append(view).children(':last').hide()
@@ -625,7 +625,7 @@
 							.find('div:eq(4)').children().html();
 					var palette_name = $("#inputText").val();
 					var user_seq = "${userVO.user_seq}";
-					var el = $(this)
+					var el = $(this);
 					$.ajax({
 						url : "insertMyPalettes.do",
 						type : "POST",
@@ -640,7 +640,10 @@
 						},
 						dataType : "text",
 						success : function() {
-							el.attr('src','${cpath}/resources/images/fullHeart.png');
+							if (check =='${cpath}/resources/images/fullHeart.png')
+								el.attr('src','${cpath}/resources/images/emptyHeart.png');
+							if (check =='${cpath}/resources/images/emptyHeart.png')
+								el.attr('src','${cpath}/resources/images/fullHeart.png');
 						},
 						error : function() {
 							alert("로그인이 필요한 서비스입니다.");
@@ -682,10 +685,11 @@
 						},
 						dataType : "text",
 						success : function() {
-							if (check =='${cpath}/resources/images/fullHeart.png')
+							if (check =='${cpath}/resources/images/fullHeart.png'){
 								el.attr('src','${cpath}/resources/images/emptyHeart.png');
-							if (check =='${cpath}/resources/images/emptyHeart.png')
+							}else if (check =='${cpath}/resources/images/emptyHeart.png'){
 								el.attr('src','${cpath}/resources/images/fullHeart.png');
+							}
 						},
 						error : function() {
 							alert("로그인이 필요한 서비스입니다.");
