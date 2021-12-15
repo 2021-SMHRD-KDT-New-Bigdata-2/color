@@ -174,7 +174,7 @@ th {
 					<input id="inputHex" class="colorHex colorHexInput" data-wcp-format="css" value="">
 					<br>
 					<select name="bo-sack" id="bo-sack-select">
-						<option value="bande">Complementray</option>
+						<option value="bande">Complementary</option>
 						<option value="mono">Monochromatic</option>
 						<option value="sam-sack">Triadic</option>
 						<option value="sa-sack">Tetradic</option>
