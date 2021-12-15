@@ -60,4 +60,8 @@
 		resultType="kr.color.domain.Palettes" parameterType="int">
 		select * from Palettes where palette_seq=#{seq};
 	</select>
+	
+	<delete id="DeleteAll">
+	    truncate userPalettes;
+	</delete>
 </mapper>

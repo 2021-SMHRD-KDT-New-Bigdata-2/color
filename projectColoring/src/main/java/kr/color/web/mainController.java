@@ -45,5 +45,11 @@ public class mainController {
 		model.addAttribute("vo", vo);
 		return "paletteDetailRandom";
 	}
+	
+	@RequestMapping("/DeleteAll.do")
+	public String DeleteAll() {
+		mapper.DeleteAll();
+		return "redirect:/mypage";
+	}
 
 }

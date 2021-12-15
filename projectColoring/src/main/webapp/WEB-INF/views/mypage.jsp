@@ -309,6 +309,7 @@ th {
 					<h2>
 						<b>My Favorites</b>
 					</h2>
+					<a style="cursor:pointer" href="DeleteAll.do">전체삭제</a>
 					<div class="palettes_list">
 						<ul id="palettes_result" class="palettes">
 						</ul>
