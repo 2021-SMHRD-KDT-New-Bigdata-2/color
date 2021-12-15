@@ -124,20 +124,6 @@ th {
 						<li>
 							<!-- modal 시작 --> <a id="loginBtn" style="cursor: pointer;">LOG
 								IN</a>
-							<div class="modal fade" id="loginModal" tabindex="-1"
-								role="dialog" aria-labelledby="exampleModalLabel"
-								aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="login-form" style="margin-bottom: 10%">
-										<form action="${cpath}/Login.do" method="post">
-											<input type="text" name="user_id" class="text-field"
-												placeholder="아이디"> <input type="password"
-												name="user_pwd" class="text-field" placeholder="비밀번호">
-											<input type="submit" value="로그인" class="submit-btn">
-										</form>
-									</div>
-								</div>
-							</div> <!-- modal 끝 -->
 						</li>
 						<li><a id="joinBtn" style="margin-left: 5%; cursor: pointer;"
 							onClick="location.href='join'">JOIN</a></li>

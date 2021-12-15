@@ -90,6 +90,7 @@ ul li {
 #bo-sack-select {
 	height: 30px;
 	width: 140px;
+	font-weight: 600;
 }
 
 #inputHex {

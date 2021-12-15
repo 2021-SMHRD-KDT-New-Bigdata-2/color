@@ -297,6 +297,7 @@ section {
 		vertical-align: middle;
 		margin-left: 10px;
 		margin-right: 10px;
+		font-weight: 600;
 	}
 	#palettes_result {
 		padding: 0px;

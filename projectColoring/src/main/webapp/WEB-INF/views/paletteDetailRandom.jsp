@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="${cpath}/resources/css/style3.css" />
 <script src="${cpath}/resources/js/bootstrap.min.js"></script>
 <script src="${cpath}/resources/js/SmoothScroll.js"></script>
+<script src="${cpath}/resources/js/colorflow.min.js"></script>
+<script src="${cpath}/resources/js/jquery.wheelcolorpicker.js"></script>
+<link type="text/css" rel="stylesheet" href="${cpath}/resources/css/wheelcolorpicker.css" />
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -160,27 +163,55 @@ th {
 		</div>
 	</nav>
 	<!-- 상단 로그인, 로그아웃 바 끝 -->
+	<div class="modal fade" id="colorModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="login-form" style="margin-bottom: 10%">
+				<div style="text-align: center; margin-bottom: 10px;">
+					<span class="colorModal-display colorHex"></span>
+				</div>
+				<div style="text-align: center">
+					<input id="inputHex" class="colorHex colorHexInput" data-wcp-format="css" value="">
+					<br>
+					<select name="bo-sack" id="bo-sack-select">
+						<option value="bande">Complementray</option>
+						<option value="mono">Monochromatic</option>
+						<option value="sam-sack">Triadic</option>
+						<option value="sa-sack">Tetradic</option>
+						<option value="o-sack">Pentadic</option>
+					</select>
+				</div>
+				<div class="palettes_list boSack_list">
+					<ul class="palettes boSacks">
+						<li>
+							<div id="bo-sack" class="colors"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div id="target" class="specific">
 		<ul id="list" class="main">
 			<li class="mc-block">
-				<div class="palette_color"
+				<div class="palette_color callColor"
 					style="background-color: ${vo.palette_color1};"></div>
 			</li>
 			<li class="mc-block">
-				<div class="palette_color"
+				<div class="palette_color callColor"
 					style="background-color: ${vo.palette_color2};"></div>
 			</li>
 			<li class="mc-block">
-				<div class="palette_color"
+				<div class="palette_color callColor"
 					style="background-color: ${vo.palette_color3};"></div>
 			</li>
 			<li class="mc-block">
-				<div class="palette_color"
+				<div class="palette_color callColor"
 					style="background-color: ${vo.palette_color4};"></div>
 			</li>
 			<li class="mc-block">
-				<div class="palette_color"
+				<div class="palette_color callColor"
 					style="background-color: ${vo.palette_color5};"></div>
 			</li>
 		</ul>
@@ -204,7 +235,7 @@ th {
 						</tr>
 						<tr>
 							<td class="color-pre" style="text-align: center;"><span
-								class="color-display" style="background: ${vo.palette_color1};">
+								class="color-display callColor" style="background: ${vo.palette_color1};">
 							</span></td>
 							<td>
 								<ul>
@@ -220,7 +251,7 @@ th {
 						</tr>
 						<tr>
 							<td class="color-pre" style="text-align: center;"><span
-								class="color-display" style="background: ${vo.palette_color2};">
+								class="color-display callColor" style="background: ${vo.palette_color2};">
 							</span></td>
 							<td>
 								<ul>
@@ -236,7 +267,7 @@ th {
 						</tr>
 						<tr>
 							<td class="color-pre" style="text-align: center;"><span
-								class="color-display" style="background: ${vo.palette_color3};">
+								class="color-display callColor" style="background: ${vo.palette_color3};">
 							</span></td>
 							<td>
 								<ul>
@@ -252,7 +283,7 @@ th {
 						</tr>
 						<tr>
 							<td class="color-pre" style="text-align: center;"><span
-								class="color-display" style="background: ${vo.palette_color4};">
+								class="color-display callColor" style="background: ${vo.palette_color4};">
 							</span></td>
 							<td>
 								<ul>
@@ -268,7 +299,7 @@ th {
 						</tr>
 						<tr>
 							<td class="color-pre" style="text-align: center;"><span
-								class="color-display" style="background: ${vo.palette_color5};">
+								class="color-display callColor" style="background: ${vo.palette_color5};">
 							</span></td>
 							<td>
 								<ul>
@@ -293,6 +324,157 @@ th {
 		e.preventDefault();
 		$('#loginModal').modal('show');
 	});
+	
+	$(".callColor").mouseenter(function() {
+		var rgb = $(this).css("background-color");
+		var hex = rgb2hex(rgb);
+		$(".colorModal-display").css("background-color", hex)
+		$("#inputHex").val(hex);
+		$("#inputHex").trigger("change");
+	})
+	
+	$('.callColor').click(function(e) {
+		e.preventDefault();
+		$('#colorModal').modal('show');
+	});
+	
+	$("#bo-sack-select").on("change", function() {
+      $("#inputHex").trigger("change")
+    });
+	
+	$(function() {
+        $('#inputHex').wheelColorPicker();
+    });
+	
+	$(document).on("mousemove", ".jQWCP-wWidget", function() {
+		$("#inputHex").trigger("change");
+	});
+
+    // 보색을 찾자 ^^77777
+    $("#inputHex").on("change", function() {
+      var hex = $("#inputHex").val();
+      $(".colorModal-display").css("background-color", hex)
+      var select = $("#bo-sack-select").val()
+      if(select == "bande") {
+        bande(hex, select);
+      };
+
+      if(select == "mono") {
+        mono(hex, select);
+      };
+      
+      if(select == "sam-sack") {
+        sam_sack(hex, select);
+      };
+
+      if(select == "sa-sack") {
+        sa_sack(hex, select);
+      };
+
+      if(select == "o-sack") {
+        o_sack(hex, select);
+      }
+    });
+
+    function bande(hex, select) {
+      var result = $ui.color.complement(hex);
+      var view = "<div class='palette_color' style='background-color:"+result+";'>";
+        view += "<span class='hex'>"+result+"</span>";
+        view += "</div>";
+      $("#bo-sack").html(view);
+    };
+
+    function mono(hex, select) {
+      var result = [$ui.color.lighten(hex, 50),hex,$ui.color.darken(hex, 50)];
+      var view = "";
+      $.each(result, function(i, color) {
+        view += "<div class='palette_color' style='background-color:"+color+";'>";
+        view += "<span class='hex'>"+color+"</span>";
+        view += "</div>";
+      });
+      $("#bo-sack").html(view);
+    };
+    
+    function sam_sack(hex, select) {
+      var result = $ui.color.triadic(hex);
+      var view = "";
+      $.each(result, function(i, color) {
+        view += "<div class='palette_color' style='background-color:"+color+";'>";
+        view += "<span class='hex'>"+color+"</span>";
+        view += "</div>";
+      });
+      $("#bo-sack").html(view);
+    };
+
+    function sa_sack(hex, select) {
+      var result = $ui.color.tetradic(hex);
+      var view = "";
+      $.each(result, function(i, color) {
+        view += "<div class='palette_color' style='background-color:"+color+";'>";
+        view += "<span class='hex'>"+color+"</span>";
+        view += "</div>";
+      });
+      $("#bo-sack").html(view);
+    };
+
+    function o_sack(hex, select) {
+      var result = $ui.color.pentadic(hex);
+      var view = "";
+      $.each(result, function(i, color) {
+        view += "<div class='palette_color' style='background-color:"+color+";'>";
+        view += "<span class='hex'>"+color+"</span>";
+        view += "</div>";
+      });
+      $("#bo-sack").html(view);
+    };
+
+    // rgb -> 헥스
+   function rgb2hex(rgb) {
+	if (  rgb.search("rgb") == -1 ) {
+	     return rgb;
+	 } else {
+     rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+     function hex(x) {
+          return ("0" + parseInt(x).toString(16)).slice(-2);
+     }
+     return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
+	 }
+	};
+	
+	// 클릭시 복사
+	$(document).on("click", ".palette_color", function() {
+		var tmp = document.createElement("textarea");
+		document.body.append(tmp);
+		tmp.value = $(this).children().html();
+		tmp.select();
+		document.execCommand('copy');
+		document.body.removeChild(tmp);
+		$(this).children().html("Copied!");
+	});
+
+	// 마우스 호버 헥스코드 표시/초기화
+	var tmp_code
+	$(document).on("mouseenter", ".palette_color", function() {
+		tmp_code = $(this).children().html();
+		$(this).children().css("color", getColorByLuma(tmp_code))
+		$(this).children().css("display", "inline");
+	});
+	$(document).on("mouseleave", ".palette_color", function() {
+		$(this).children().css("display", "none");
+		$(this).children().html(tmp_code);
+	});
+
+	// 밝기 값에 따라서 텍스트 색상 변경
+	function getColorByLuma(hexColor) {
+		const c = hexColor.substring(1) // 색상 앞의 # 제거
+		const rgb = parseInt(c, 16) // rrggbb를 10진수로 변환
+		const r = (rgb >> 16) & 0xff // red 추출
+		const g = (rgb >> 8) & 0xff // green 추출
+		const b = (rgb >> 0) & 0xff // blue 추출
+		const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
+		// 색상 선택
+		return luma < 127.5 ? "white" : "black";
+	}
 	
 	// 헥스코드-> RGB 변환
 	function changeRGB(hexColor) {
