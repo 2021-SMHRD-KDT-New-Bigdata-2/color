@@ -15,7 +15,7 @@ select * from userInfo where user_id='userId01' and user_pwd='1234'
 
 delete from userInfo where user_id='userId05'
 use color;
-select palette_name count('autumn aura') from userPalettes;
+select * from Palettes
 
 use color;
 SELECT * FROM `autumn aura` GROUP BY palette_name HAVING COUNT(palette_name) > 1

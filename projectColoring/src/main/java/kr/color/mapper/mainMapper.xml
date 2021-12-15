@@ -3,40 +3,61 @@
 <mapper namespace="kr.color.mapper.mainMapper">
 
 	<select id="getMainList" resultType="kr.color.domain.Palettes">
-		select p.palette_seq, t.txt_seq, p.palette_color1, p.palette_color2, p.palette_color3, p.palette_color4, p.palette_color5, p.regdit_date, p.user_seq from inputtext t, palettes p where t.txt_seq = p.txt_seq order by rand() limit 16
+		select p.palette_seq,
+		t.txt_seq, p.palette_color1, p.palette_color2, p.palette_color3,
+		p.palette_color4, p.palette_color5, p.regdit_date, p.user_seq from
+		inputtext t, palettes p where t.txt_seq = p.txt_seq order by rand()
+		limit 16
 	</select>
 
 	<select id="genPalette" resultType="kr.color.domain.Palettes">
-	    select p.palette_seq, t.txt_seq, p.palette_color1, p.palette_color2, p.palette_color3, p.palette_color4, p.palette_color5, p.regdit_date, p.user_seq from inputtext t, palettes p where t.txt_seq = p.txt_seq order by jaro_winkler_similarity(#{inputText}, t.txt_content) desc limit 16
+		select p.palette_seq, t.txt_seq, p.palette_color1, p.palette_color2,
+		p.palette_color3, p.palette_color4, p.palette_color5, p.regdit_date,
+		p.user_seq from inputtext t, palettes p where t.txt_seq = p.txt_seq
+		order by jaro_winkler_similarity(#{inputText}, t.txt_content) desc
+		limit 16
 	</select>
-	
-	<select id="getMyPalettes" parameterType="int" resultType="kr.color.domain.userPalettes">
-	    select * from userPalettes where user_seq=#{user_seq};
+
+	<select id="getMyPalettes" parameterType="int"
+		resultType="kr.color.domain.userPalettes">
+		select * from userPalettes where user_seq=#{user_seq};
 	</select>
-	
+
 	<delete id="deleteMyPalette" parameterType="int">
-	    delete from userPalettes where palette_seq=#{seq};
+		delete from userPalettes where palette_seq=#{seq};
 	</delete>
-	
+
 	<insert id="insertMyPalettes"
 		parameterType="kr.color.domain.userPalettes">
-		INSERT INTO userPalettes (palette_name, palette_color1,palette_color2,palette_color3, palette_color4, palette_color5,user_seq)
-		VALUES (#{palette_name}, #{palette_color1},#{palette_color2}, #{palette_color3}, #{palette_color4},#{palette_color5}, #{user_seq});
+		INSERT INTO userPalettes (palette_name,
+		palette_color1,palette_color2,palette_color3, palette_color4,
+		palette_color5,user_seq)
+		VALUES (#{palette_name},
+		#{palette_color1},#{palette_color2}, #{palette_color3},
+		#{palette_color4},#{palette_color5}, #{user_seq});
 	</insert>
-	
-	<select id="paletteDetail" parameterType="int" resultType="kr.color.domain.userPalettes">
-	    select * from userPalettes where palette_seq=#{seq};
+
+	<select id="paletteDetail" parameterType="int"
+		resultType="kr.color.domain.userPalettes">
+		select * from userPalettes where palette_seq=#{seq};
 	</select>
-	
-	<select id="getPaletteName" resultType="kr.color.domain.InputText">
-	    select txt_content from inputText ;
+
+	<select id="getPaletteName"
+		resultType="kr.color.domain.InputText">
+		select txt_content from inputText ;
 	</select>
-	
-	<select id="checkPaletteName" resultType="kr.color.domain.userPalettes" parameterType="String">
-	    select * from userPalettes where palette_name=#{name};
+
+	<select id="checkPaletteName"
+		resultType="kr.color.domain.userPalettes" parameterType="String">
+		select * from userPalettes where palette_name=#{name};
 	</select>
-	
+
 	<delete id="deleteMyPaletteToName" parameterType="String">
-	    delete from userPalettes where palette_name=#{name};
+		delete from userPalettes where palette_name=#{name};
 	</delete>
+
+	<select id="paletteDetailRandom"
+		resultType="kr.color.domain.Palettes" parameterType="int">
+		select * from Palettes where palette_seq=#{seq};
+	</select>
 </mapper>

@@ -19,4 +19,5 @@ public interface mainMapper {
 	public List<InputText> getPaletteName();
 	public List<userPalettes> checkPaletteName(String name);
 	public void deleteMyPaletteToName(String name);
+	public Palettes paletteDetailRandom(int seq);
 }

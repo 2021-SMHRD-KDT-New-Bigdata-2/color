@@ -53,5 +53,6 @@ public class AjaxController {
 		}
 		return "ok";
 	}
+	
 
 }

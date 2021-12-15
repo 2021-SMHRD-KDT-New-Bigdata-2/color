@@ -184,7 +184,7 @@ th {
 		<div class="color-info">
 			<div class="section-title">
 				<h2 style="text-align: center;">
-					<b>SAVED NAME : ${vo.palette_name}</b>
+					<b>NAME : ${vo.palette_name}</b>
 				</h2>
 				<table>
 					<colgroup>

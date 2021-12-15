@@ -318,7 +318,6 @@
 							</div>
 						</div>
 					</div>
-
 					<form class="palette-search-form" onsubmit="return false"
 						style="margin-top: 40px">
 						<div class="input-group" style="margin: 0% 20% 0% 20%;">
@@ -367,7 +366,7 @@
 								style="background-color: ${vo.palette_color5};">
 								<span class="hex">${vo.palette_color5}</span>
 							</div>
-						</div> <a href='${cpath}/paletteDetail.do?seq=${vo.palette_seq}'
+						</div> <a href='${cpath}/paletteDetailRandom.do?seq=${vo.palette_seq}&name=${PList[vo.palette_seq].txt_content}'
 						class='palettes_name' id='PaletteName'>${PList[vo.palette_seq].txt_content}</a>
 						<img src='${cpath}/resources/images/emptyHeart.png'
 						class='savePaletteRandom saveBtn tooltip-bottom' id='emptyHeart'></li>

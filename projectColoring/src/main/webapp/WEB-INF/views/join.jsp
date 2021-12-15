@@ -70,7 +70,7 @@ function checkBtn(){
 				name="user_name" class="text-field" placeholder="이름" id="user_name">
 			<input type="text" name="user_phone" class="text-field"
 				placeholder="핸드폰번호" id="user_phone">
-			<button type="button" class="submit-btn" onclick="checkBtn()">가입</button>
+			<button type="button" class="submit-btn" onclick="checkBtn()" style="cursor:pointer;">가입</button>
 		</form>
 	</div>
 </body>
