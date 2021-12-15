@@ -130,8 +130,9 @@
 	display: inline-block;
 	vertical-align: top;
 	background: #f7f7f7;
-	border-radius: 10px;
-	margin: 5px;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
 	padding: 10px 15px 10px 10px;
 	border: 1px solid #d6d6d6;
 	position: relative;
@@ -414,6 +415,7 @@
 		}
 
 		function translate(lang_code, txt_content) {
+			console.log(lang_code)
 			if (lang_code == "en") {
 				sendInput(txt_content);
 				return false;
@@ -531,6 +533,7 @@
 		});
 
 		function showPalResult(data) {
+			var inputText = $("#inputText").val()
 			for (var i = 0; i < 4; i++) {
 				var view = "<li>";
 				view += "<div>";
@@ -555,6 +558,7 @@
 						+ "</span>";
 				view += "</div>";
 				view += "</div>";
+				view += "<span class='palettes_name' id='PaletteName'>"+inputText+"</span>"
 				view += "<img src='${cpath}/resources/images/emptyHeart.png' class='savePalette saveBtn tooltip-bottom' id='emptyHeart'>";
 				view += "</li>";
 				$(".light-bg").LoadingOverlay("hide", true);
