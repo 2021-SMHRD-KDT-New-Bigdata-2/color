@@ -126,6 +126,12 @@ th {
 								aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="login-form" style="margin-bottom: 10%">
+										<div style="text-align: center; margin-bottom: 10%;">
+											<img src="${cpath}/resources/images/colorLogo.png"
+												style="width: 50%; height: 50%;"> <img
+												src="${cpath}/resources//images/coloringLogo_small.png"
+												style="width: 50%; height: 50%;">
+										</div>
 										<form action="${cpath}/Login.do" method="post">
 											<input type="text" name="user_id" class="text-field"
 												placeholder="아이디"> <input type="password"
@@ -282,6 +288,11 @@ th {
 		</div>
 	</section>
 	<script type="text/javascript">
+	
+	$('#loginBtn').click(function(e) {
+		e.preventDefault();
+		$('#loginModal').modal('show');
+	});
 	
 	// 헥스코드-> RGB 변환
 	function changeRGB(hexColor) {

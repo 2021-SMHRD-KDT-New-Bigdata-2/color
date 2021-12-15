@@ -288,6 +288,9 @@ section {
 		height: 50px;
 		flex: 1;
 	}
+	.palette_color{
+		text-align: center;
+	}
 	.palette_color>span {
 		display: none;
 		line-height: 47px;
