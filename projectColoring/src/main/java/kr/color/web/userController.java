@@ -45,12 +45,13 @@ public class userController {
 		return "redirect:/";
 	}
 	
-	// 로그아웃
-	@RequestMapping("/Logout.do")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/";
-	}
+	// ----로그아웃 삭제----
+	// get 방식으로 카카오로 전송해 session 만료 및 카카오 연결 끊음
+//		@RequestMapping("/Logout.do")
+//		public String logout(HttpSession session) {
+//			session.invalidate();
+//			return "redirect:/";
+//		}
 	
 	// 마이페이지
 	@RequestMapping("/mypage")

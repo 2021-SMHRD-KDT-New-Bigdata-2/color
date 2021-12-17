@@ -14,4 +14,11 @@
 		user_pwd=#{user_pwd};
 	</select>
 
+	<!-- 우리 페이지에서 카카오로 로그인을 한 번이라도 하면 DB에 저장이 된다. -->
+	<!-- 다음에 또 로그인 시 중복 저장이 되지 않도록 userID 확인 절차가 필요하다. -->
+	<select id="checkId" parameterType="kr.color.domain.UserInfo"
+		resultType="kr.color.domain.UserInfo">
+		select * from userInfo where user_id=#{user_id} limit 1;
+	</select>
+
 </mapper>
