@@ -26,14 +26,6 @@
 <title>Coloring - Describe Your Emotions</title>
 <!-- Style 시작 -->
 <style>
-#logo {
-	height: 36px;
-	width: 150px;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-}
-
 .effect-bubba {
 	width: 20%;
 	height: 20%;
@@ -447,6 +439,7 @@ th {
 		document.body.append(tmp);
 		tmp.value = $(this).children().html();
 		tmp.select();
+		tmp.focus();
 		document.execCommand('copy');
 		document.body.removeChild(tmp);
 		$(this).children().html("Copied!");
